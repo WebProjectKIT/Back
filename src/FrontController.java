@@ -1,4 +1,3 @@
-package controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,6 +16,8 @@ public class FrontController extends HttpServlet{
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uri = request.getRequestURI();
         System.out.println(uri);
+
+
     }
 
 }
