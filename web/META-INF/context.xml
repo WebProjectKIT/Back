@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <Resource name="jdbc/mariadb"
+              type="javax.sql.DataSource"
+              auth="Container"
+              maxActive="30"
+              maxIdle="3"
+              maxWait="3000"
+              username="webtpUser"
+              password="2017"
+              testOnBorrow="true"
+              driverClassName="org.mariadb.jdbc.Driver"
+              url="jdbc:mariadb://aitta.iptime.org/webtp?characterEncoding=utf8&amp;serverTimezone=UTC&amp;useSSL=false&amp;allowPublicKeyRetrieval=true" />
+</Context>
