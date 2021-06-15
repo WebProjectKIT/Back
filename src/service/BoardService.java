@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import domain.Board;
 import persistance.BoardRepository;
-import persistence.BoardRepository;
 
 public class BoardService {
 	private final BoardRepository boardRepository = BoardRepository.getInstance();
