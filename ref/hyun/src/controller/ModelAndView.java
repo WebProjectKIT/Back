@@ -1,8 +1,9 @@
 package controller;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 //model과 viewpath에 대한 정보를 담음
 public class ModelAndView {

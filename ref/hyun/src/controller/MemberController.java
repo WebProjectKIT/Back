@@ -1,13 +1,15 @@
 package controller;
 
-import domain.Member;
-import service.MemberService;
+import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.ArrayList;
+
+import domain.Member;
+import service.MemberService;
 
 public class MemberController implements Controller{
 	

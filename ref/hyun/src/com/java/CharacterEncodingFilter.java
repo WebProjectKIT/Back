@@ -1,8 +1,10 @@
 package com.java;
 
+import java.io.IOException;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import java.io.IOException;
+import javax.servlet.annotation.WebInitParam;
 
 @WebFilter("/*")	
 public class CharacterEncodingFilter implements Filter {

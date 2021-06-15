@@ -1,13 +1,13 @@
 package controller;
 
+import java.io.IOException;
+import java.util.Map;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Map;
-
-// map -> 1. "members", members(ArrayList)
+// map -> 1. "members", members(ArrayList) 
 //        2. "auth", int auth
 public class View {
 	private String viewPath;

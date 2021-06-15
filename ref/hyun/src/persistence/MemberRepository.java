@@ -1,13 +1,19 @@
 package persistence;
 
-import domain.Member;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.*;
+
+import domain.Member;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.sql.Connection;
 
 public class MemberRepository {
 	private static MemberRepository instance;

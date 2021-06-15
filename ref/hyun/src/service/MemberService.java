@@ -1,9 +1,12 @@
 package service;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.management.RuntimeErrorException;
+
 import domain.Member;
 import persistence.MemberRepository;
-
-import java.util.ArrayList;
 
 public class MemberService {
 	private final MemberRepository memberRepository = MemberRepository.getInstacne();

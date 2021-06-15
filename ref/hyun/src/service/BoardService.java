@@ -1,9 +1,9 @@
 package service;
 
+import java.util.ArrayList;
+
 import domain.Board;
 import persistence.BoardRepository;
-
-import java.util.ArrayList;
 
 public class BoardService {
 	private final BoardRepository boardRepository = BoardRepository.getInstance();
