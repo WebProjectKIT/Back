@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./css/navi.css">
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/cardview.css">
+        <link rel="stylesheet" href="./css/pagination.css">
+        <link rel="stylesheet" href="./css/modal.css">
+        <link rel="stylesheet" href="./css/login.css">
+    </head>
+    <body>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="./main.html" class="navItem">Main</a>
+            <a href="./seeAll.html" class="navItem">All Portfolio</a>
+            <a href="./profile.html" class="navItem">My page</a>
+            <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
+                <img src="asset/git-squared.png"></a>
+        </div>
+        <div id="main">
+            <span onclick="openNav()">&#9776;
+            </span>
+            <header>
+                <img src="asset/typewriter-801921_1920.jpg">
+            </header>
+            <article>
+                <section class="login-input-section-wrap">
+                    <form name = loginform>
+                    <div class = "login_input">
+                        <span>아이디</span>
+                        <div class="login-input-wrap">	
+                            <input type="text" name="user_id" placeholder="Username" type="text"></input>
+                        </div>
+                    </div>
+                    <div class = "login_input">
+                    <span>비밀번호</span>
+                        <div class="login-input-wrap password-wrap">	
+                            <input type="password" name="pass_id" placeholder="Password" type="password"></input>
+                        </div>
+                    </div>
+                    <button onclick="check()" class="loginBtn">Login</button>
+                    </form>
+                </section>
+            </article>
+            <footer>WebProjectKIT</footer>
+        </div>
+        <script src="./script/main.js"></script>
+        <script src="./script/modal.js"></script>
+        <script src="./script/login.js"></script>
+    </body>
+</html>

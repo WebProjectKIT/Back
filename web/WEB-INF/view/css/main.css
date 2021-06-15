@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'InkLipquid';
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot");
+    src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix") format('embedded-opentype'), url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff") format('woff'), url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf") format('truetype');
+}
+
+* {
+    font-family: 'NanumBarunGothic';
+}
+
+header {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+header > img {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#main > article {
+    margin-inline: 5%;
+    margin-top: 3%;
+}
+
+#main > article > section > h2 {
+    font-family: 'InkLipquid';
+    font-size: 200%;
+    letter-spacing: 0.5rem;
+    width:100%;
+}
+
+section{
+    margin-bottom: 10%;
+}
+
+section>p{
+    line-height: 180%;
+    font-size: 120%;
+}
+
+.seeMore , .addMine{
+    display: block;
+    float:right;
+    letter-spacing: 0.15rem;
+    font-weight: bolder;
+    font-size: 110%;
+    text-align: center;
+    background-color: black;
+    padding:10px;
+    border-radius: 30px;
+    color:white;
+}
+
+.seeMore:hover, .addMine:hover{
+    cursor: pointer;
+    background-color: rgb(75, 75, 75);
+}
+
+.cardviewBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+footer{
+    margin-top:50px;
+    color:white;
+    background-color: black;
+    padding:5%;
+}
+
+@media screen and (max-width: 768px), (max-height:1024){
+    section{
+        margin-bottom: 20%;
+    }
+}

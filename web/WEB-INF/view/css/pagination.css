@@ -1,0 +1,42 @@
+.pagination{
+    display: flex;
+    width:100%;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pagination>span{
+    font-size : 30px;
+    padding:15px;
+}
+
+.arrow{
+    width:30px;
+    height:30px;
+}
+
+#leftArr{
+    transform:rotate(90deg);
+}
+
+
+#rightArr{
+    transform:rotate(-90deg);
+}
+
+@media screen and (max-width: 768px), (max-height:1024) {
+    .arrow{
+        display: inline;
+    }
+
+    .pagination>span{
+        font-size : 15px;
+        padding:9px;
+    }
+    
+    .arrow{
+        width:15px;
+        height:15px;
+    }
+}

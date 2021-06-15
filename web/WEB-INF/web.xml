@@ -5,7 +5,7 @@
          version="4.0">
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
-        <filter-class>ref.hyun.java.CharacterEncodingFilter</filter-class>
+        <filter-class>com.java.CharacterEncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>

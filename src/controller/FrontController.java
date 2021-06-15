@@ -11,42 +11,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name="frontController", urlPatterns = "/front/*")
+@WebServlet(name="frontController", urlPatterns = "/*")
 public class FrontController extends HttpServlet{
 	
 	private Map<String, Controller> controllerMap = new HashMap<>();
 	
 	public FrontController() {
-		controllerMap.put("board", new BoardController());
+		controllerMap.put("login", new LoginController());
 	}
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String uri = request.getRequestURI();
-		String conPath = request.getContextPath();
-		conPath+="/front";
-		String com = uri.substring(conPath.length());
-		System.out.println("uri "+ uri);
-		System.out.println("conPath "+ conPath);
-		System.out.println("com "+ com);
-		
-		if(com.equals("/")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/index.jsp");
+		System.out.println(uri);
+
+		if(uri.equals("/")) {
+			System.out.println("정상");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/main.html");
 			dispatcher.forward(request, response);
-		}else {
-			String [] tokens = com.split("/");
+
+		} else {
+			System.out.println("비정상");
+			String [] tokens = uri.split("/");
 			String domain = tokens[1];
+
 			Controller controller = controllerMap.get(domain);
+
 			if(controller == null) {
 				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 				return;
 			}
-			ModelAndView mv = controller.process(request, response, com);//논리 이름, -> 물리이름			
+
+			ModelAndView mv = controller.process(request, response, uri);//논리 이름, -> 물리이름
 			String viewPath = viewResolver(mv.getViewName());
+
 			View view = new View(viewPath);
 			view.render(mv.getModel(), request, response);
+
 		}
 	}
+
 	private String viewResolver(String viewName) {
 		return "/WEB-INF/view/"+viewName+".jsp";
 	}
+
 }
