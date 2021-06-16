@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-         pageEncoding="EUC-KR"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix= "c" uri= "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +35,7 @@
             <article>
                 <section>
                     <h2>My Portfolio</h2>
-                    <p>∏∂¿Ã ∆˜∆Æ∆˙∏Æø¿</p>
+                    <p>ÎßàÏù¥ Ìè¨Ìä∏Ìè¥Î¶¨Ïò§</p>
                     <div id="cardBody1">
                         <div class="card">
                             <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"  onclick=addStar()>
@@ -46,26 +48,26 @@
                         </div>
                     </div>
                     <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp">
-                        <p class="seeMore">¥ı∫∏±‚</p>
+                        <p class="seeMore">ÎçîÎ≥¥Í∏∞</p>
                     </a>
                 </section>
                 <section>
                     <h2>Portfolio</h2>
-                    <p>∆˜∆Æ∆˙∏Æø¿ ∞‘Ω√∆«</p>
+                    <p>Ìè¨Ìä∏Ìè¥Î¶¨Ïò§ Í≤åÏãúÌåê</p>
                     <div id="cardBody">
-
-                        <div class="card">
-                            <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"  onclick=addStar()>
-                            <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
-                            <h1>Project1</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quo perferendis
-                                placeat fuga voluptatem. Itaque, in! Quos debitis similique sunt? Non tempora
-                                iste libero quidem aliquid molestiae commodi omnis eum!</p>
-                            <div class="from">made BY HJ</div>
-                        </div>
+                        <c:forEach var="board" items="${boards}">
+                            <div class="card">
+                                <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png" onclick=addStar()>
+                                <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
+                                <h1>${board.title}</h1>
+                                <p>${board.creationDate}</p>
+                                <p>${board.view}</p>
+                                <div class="from">made BY ${board.email}</div>
+                            </div>
+                        </c:forEach>
                     </div>
                     <a href="${pageContext.request.contextPath}/front/portfolio-board">
-                        <p class="seeMore">¥ı∫∏±‚</p>
+                        <p class="seeMore">ÎçîÎ≥¥Í∏∞</p>
                     </a>
                 </section>
             </article>

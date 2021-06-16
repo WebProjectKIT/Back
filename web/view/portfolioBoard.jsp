@@ -17,9 +17,9 @@
     <body>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="${pageContext.request.contextPath}/view/main.jsp" class="navItem">Main</a>
-            <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp" class="navItem">My Portfolio</a>
-            <a href="${pageContext.request.contextPath}/view/profile.jsp" class="navItem">My page</a>
+            <a href="${pageContext.request.contextPath}/front/main.jsp" class="navItem">Main</a>
+            <a href="${pageContext.request.contextPath}/front/myPortfolio.jsp" class="navItem">My Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/profile.jsp" class="navItem">My page</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="${pageContext.request.contextPath}/view/asset/git-squared.png"></a>
         </div>
@@ -49,6 +49,29 @@
                         </c:forEach>
                     </div>
                 </section>
+
+                <p class="addMine" id="openBtn">글쓰기</p>
+                <div id="modal">
+                    <form method="POST">
+                    <h1>포트폴리오 추가</h1>
+                    <div>
+                        <label for="title">제목</label>
+                        <input type="text" id="title" name="title"></div>
+                    <div class="form-group">
+                        <label for="content">내용</label>
+                        <textarea class="form-control" rows="10" id="content" name="content"></textarea>
+                    </div>
+                    <div>
+                        <label for="link">링크</label>
+                        <input type="text" id="link" name="link"></div>
+                    <div>
+                        <label for="about">설명</label>
+                        <input type="text" id="about" name="about"></div>
+                    <button onclick=getEle()>추가하기</button>
+                    </form>
+                    <a class="closeBtn"><img src="./asset/cancel.png"></a>
+                </div>
+
                 <div class="pagination">
                     <span><img src="${pageContext.request.contextPath}/view/asset/arrow-down-sign-to-navigate.png" class="arrow" id="leftArr"></span>
                     <span>1</span>
@@ -66,5 +89,6 @@
 
         <script><jsp:include page="/view/script/main.js" /></script>
         <script><jsp:include page="/view/script/add.js" /></script>
+        <script><jsp:include page="/view/script/modal.js" /></script>
     </body>
 </html>

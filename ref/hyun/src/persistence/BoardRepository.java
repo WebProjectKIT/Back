@@ -29,7 +29,6 @@ public class BoardRepository {
 				ds = (DataSource) context.lookup("java:comp/env/jdbc/MySQL");
 				return instance = new BoardRepository();
 			} catch (NamingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

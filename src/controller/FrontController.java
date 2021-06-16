@@ -13,57 +13,56 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sound.sampled.Port;
 
 @WebServlet(name = "frontController", urlPatterns = "/front/*")
-public class FrontController extends HttpServlet{
-	
-	private Map<String, Controller> controllerMap = new HashMap<>();
-	
-	public FrontController() {
-		controllerMap.put("main", new MainPageController());
-		controllerMap.put("login", new LoginController());
-		controllerMap.put("my-page", new MypageController());
-		controllerMap.put("my-portfolio", new MyPortfolioController());
-		controllerMap.put("portfolio-board", new PortfolioBoardController());
+public class FrontController extends HttpServlet {
 
-	}
+    private Map<String, Controller> controllerMap = new HashMap<>();
 
-	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public FrontController() {
+        controllerMap.put("main", new MainPageController());
+        controllerMap.put("login", new LoginController());
+        controllerMap.put("my-page", new MypageController());
+        controllerMap.put("my-portfolio", new MyPortfolioController());
+        controllerMap.put("portfolio-board", new PortfolioBoardController());
 
-		String uri = request.getRequestURI();
-		String conPath = request.getContextPath();
-		conPath += "/front";
-		String com = uri.substring(conPath.length());
+    }
 
-		if (com.equals("/")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/main.jsp");
-			dispatcher.forward(request, response);
+    @Override
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		} else {
+        String uri = request.getRequestURI();
+        String conPath = request.getContextPath();
+        conPath += "/front";
+        String com = uri.substring(conPath.length());
+        Controller controller;
 
-			String[] tokens = com.split("/");
-			String domain = tokens[1];
-			Controller controller = controllerMap.get(domain);
+        if (com.equals("/")) {
+            controller = controllerMap.get("main");
+        } else {
+            String[] tokens = com.split("/");
+            String domain = tokens[1];
+            controller = controllerMap.get(domain);
+        }
 
-			if (controller == null) {
-				response.setStatus(HttpServletResponse.SC_ACCEPTED);
-			}
+        if (controller == null) {
+            response.setStatus(HttpServletResponse.SC_ACCEPTED);
+        } else {
+            ModelAndView mv = controller.process(request, response, com);
 
-			ModelAndView mv = controller.process(request, response, com);
+            if (mv.getStatus() != HttpServletResponse.SC_OK) {
+                // 예외처리
+            }
 
-			if (mv.getStatus() != HttpServletResponse.SC_OK) {
-				// 예외처리
-			}
+            String viewPath = viewResolver(mv.getViewName());
 
-			String viewPath = viewResolver(mv.getViewName());
+            View view = new View(viewPath);    // viewPath 물리 이름 변환 필요
+            view.render(mv.getModel(), request, response);
+        }
 
-			View view = new View(viewPath);    // viewPath 물리 이름 변환 필요
-			view.render(mv.getModel(), request, response);
 
-		}
-	}
+    }
 
-	private String viewResolver(String viewName) {
-		return "/view/"+viewName+".jsp";
-	}
+    private String viewResolver(String viewName) {
+        return "/view/" + viewName + ".jsp";
+    }
 
 }
