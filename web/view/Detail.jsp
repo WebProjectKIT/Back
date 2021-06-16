@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+         pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,8 +32,8 @@
                 <section class = "detail-design">
                     <h2>Project1</h2>
                     <div class = "content-info">
-                    ì‘ì„±ì <span>ì–´ì©Œê³ ì €ì©Œê³ </span></p>
-                    ì‘ì„±ì‹œê°„ <span>2021-06-15 14:18</span>
+                    ÀÛ¼ºÀÚ <span>¾îÂ¼°íÀúÂ¼°í</span></p>
+                    ÀÛ¼º½Ã°£ <span>2021-06-15 14:18</span>
                     </div>
                     <div id = "content">
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam natus
@@ -45,26 +48,26 @@
                         <div class = "comment-row">
                             <div>
                             <textarea id = "comment-add" name = "comment-add" row = 4></textarea>
-                            <button onclick="submitComment()" type="submit" class="submitBtn">ì‘ì„±</button>  
+                            <button onclick="submitComment()" type="submit" class="submitBtn">ÀÛ¼º</button>  
                             </div>   
                             <div class = "comment-row">
                                 <div class = "comment-date">2020-06-15 17:10</div>
-                                <div class="comment-content">ddddddddddddddddddddddddddddddddddddddddddddddddddddddã…ã„´ã„»ã„´ã„¹ã…‡ã…‡ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´ã„´</div>
+                                <div class="comment-content">dddddddddddddddddddddddddddddddddddddddddddddddddddddd¤±¤¤¤«¤¤¤©¤·¤·¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤</div>
                             </div>
                             <div class = "comment-row">
                                 <div class = "comment-date">2020-06-15 17:10</div>
-                                <div class="comment-content">ì•„ê³¼ì œí•˜ê¸°ì§„ì§œì‹«ë‹¤</div>
+                                <div class="comment-content">¾Æ°úÁ¦ÇÏ±âÁøÂ¥½È´Ù</div>
                             </div>
                             <div class = "comment-row">
                                 <div class = "comment-date">2020-06-15 17:10</div>
-                                <div class="comment-content">ì•„ê³¼ì œí•˜ê¸°ì§„ì§œì‹«ë‹¤</div>
+                                <div class="comment-content">¾Æ°úÁ¦ÇÏ±âÁøÂ¥½È´Ù</div>
                             </div>
                         </div>
                     </div>
                    
                 </section>
                 <div class = "back">
-                <button class ="back_btn" onclick="goBack()">ì´ì „ í˜ì´ì§€</button>
+                <button class ="back_btn" onclick="goBack()">ÀÌÀü ÆäÀÌÁö</button>
             </div>
             </article>
 

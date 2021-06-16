@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+         pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,13 +31,13 @@
                 <section class="login-input-section-wrap">
                     <form name = loginform>
                     <div class = "login_input">
-                        <span>ÏïÑÏù¥Îîî</span>
+                        <span>æ∆¿Ãµ</span>
                         <div class="login-input-wrap">	
                             <input type="text" name="user_id" placeholder="Username" type="text"></input>
                         </div>
                     </div>
                     <div class = "login_input">
-                    <span>ÎπÑÎ∞ÄÎ≤àÌò∏</span>
+                    <span>∫Òπ–π¯»£</span>
                         <div class="login-input-wrap password-wrap">	
                             <input type="password" name="pass_id" placeholder="Password" type="password"></input>
                         </div>

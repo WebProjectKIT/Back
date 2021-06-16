@@ -1,4 +1,5 @@
-<%@page%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+         pageEncoding="EUC-KR"%>
 
 <!DOCTYPE html>
 <html>
@@ -48,7 +49,7 @@
                         </div>
                     </div>
                     <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp">
-                        <p class="seeMore">ÎçîÎ≥¥Í∏∞</p>
+                        <p class="seeMore">¥ı∫∏±‚</p>
                     </a>
                 </section>
                 <section>
@@ -70,7 +71,7 @@
                         </div>
                     </div>
                     <a href="${pageContext.request.contextPath}/view/seeAll.jsp">
-                        <p class="seeMore">ÎçîÎ≥¥Í∏∞</p>
+                        <p class="seeMore">¥ı∫∏±‚</p>
                     </a>
                 </section>
             </article>

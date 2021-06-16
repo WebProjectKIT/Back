@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+         pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,24 +34,24 @@
                     <div class = "profile_background">
                         <ul class ="profile_list">
                             <li class = "myinfo_index">
-                                <h3 id ="info_title">아이디</h3>
+                                <h3 id ="info_title">���̵�</h3>
                                 <div id = "pageinfo">helloworld</div>
                             </li>
                             <li class = "myinfo_index">
-                                <h3 id ="info_title">이메일</h3>
+                                <h3 id ="info_title">�̸���</h3>
                                 <div id = "pageinfo"><span id = useremail>suminlee2323@gmail.com</span></div>
                             </li>
                             <li class = "myinfo_index">
-                                <h3 id ="info_title">소속</h3>
-                                <div id = "pageinfo"><span id = usergroup>금오공과대학교 컴퓨터공학과</span></div>
+                                <h3 id ="info_title">�Ҽ�</h3>
+                                <div id = "pageinfo"><span id = usergroup>�ݿ��������б� ��ǻ�Ͱ��а�</span></div>
                             </li>
                             <li class = "myinfo_index">
-                                <h3 id ="info_title">전화번호</h3>
+                                <h3 id ="info_title">��ȭ��ȣ</h3>
                                 <div id = "pageinfo"><span id = userphone>010 - 1234 - 4567</span></div>
                             </li>
                             <li class = "myinfo_index">
-                                <h3 id ="info_title">주소</h3>
-                                <div id = "pageinfo"><span id = useraddress>경상북도 구미시 거의동 양호동</span></div>
+                                <h3 id ="info_title">�ּ�</h3>
+                                <div id = "pageinfo"><span id = useraddress>���ϵ� ���̽� ���ǵ� ��ȣ��</span></div>
                             </li>
                         </ul>
                     </div>
@@ -56,7 +59,7 @@
                 <section>
                     <h2>Favorites</h2>
                     <a href="seeAll.jsp">
-                        <p class="seeMore">더보기</p>
+                        <p class="seeMore">������</p>
                     </a>
                     <div id="cardBody">
                         <div class="card">
@@ -64,7 +67,7 @@
                             <img class="cancel" src="asset/cancel.png" onclick=cancel()>
                             <img src="asset/typewriter-801921_1920.jpg">
                             <h1>Project1</h1>
-                            <p>어떻게 밑으로 내리지 아아아아아아ㅏ아아아아아아아</p>
+                            <p>��� ������ ������ �ƾƾƾƾƾƤ��ƾƾƾƾƾƾ�</p>
                             <div class="from">made BY HJ</div>
                         </div>
                         <div class="card">
@@ -72,7 +75,7 @@
                             <img class="cancel" src="asset/cancel.png" onclick=cancel()>
                             <img src="asset/typewriter-801921_1920.jpg">
                             <h1>Project2</h1>
-                            <p>어떻게 밑으로 내리지 아아아아아아ㅏ아아아아아아아</p>
+                            <p>��� ������ ������ �ƾƾƾƾƾƤ��ƾƾƾƾƾƾ�</p>
                             <div class="from">made BY HJ</div>
                             </div>
                 </section>
