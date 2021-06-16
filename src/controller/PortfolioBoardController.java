@@ -1,4 +1,4 @@
 package controller;
 
-public class PortfolioBoardController {
+public class PortfolioBoardController implements Controller {
 }

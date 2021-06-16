@@ -1,4 +1,4 @@
 package controller;
 
-public class MypageController {
+public class MypageController implements Controller  {
 }

@@ -1,4 +1,4 @@
 package service;
 
-public class PortfolioService {
+public class MyPortfolioService {
 }

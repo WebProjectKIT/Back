@@ -17,7 +17,12 @@ public class FrontController extends HttpServlet{
 	private Map<String, Controller> controllerMap = new HashMap<>();
 	
 	public FrontController() {
+		controllerMap.put("main", new MainPageController());
 		controllerMap.put("login", new LoginController());
+		controllerMap.put("my-page", new MypageController());
+		controllerMap.put("my-portfolio", new MyPortfolioController());
+		controllerMap.put("portfolio-board", new PortfolioBoardController());
+
 	}
 
 	@Override
