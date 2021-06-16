@@ -16,7 +16,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="main.jsp" class="navItem">Main</a>
             <a href="seeAll.jsp" class="navItem">All Portfolio</a>
-            <a href="profile.jsp" class="navItem">My page</a>
+            <a href="myPage.jsp" class="navItem">My page</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="asset/git-squared.png"></a>
         </div>
