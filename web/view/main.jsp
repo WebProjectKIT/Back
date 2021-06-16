@@ -1,7 +1,5 @@
-<%@page import="java.util.List"%>
-<%@taglib prefix= "c" uri= "http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+         pageEncoding="EUC-KR"%>
 
 <!DOCTYPE html>
 <html>
@@ -17,9 +15,9 @@
 
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="${pageContext.request.contextPath}/front/portfolio-board" class="navItem">All Portfolio</a>
-            <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp" class="navItem">My Portfolio</a>
-            <a href="${pageContext.request.contextPath}/view/profile.jsp" class="navItem">My page</a>
+            <a href="${pageContext.request.contextPath}/front/seeAll.jsp" class="navItem">All Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/my-portfolio/" class="navItem">My Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/my-page/" class="navItem">My page</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="${pageContext.request.contextPath}/view/asset/git-squared.png"></a>
         </div>
@@ -35,7 +33,7 @@
             <article>
                 <section>
                     <h2>My Portfolio</h2>
-                    <p>ÎßàÏù¥ Ìè¨Ìä∏Ìè¥Î¶¨Ïò§</p>
+                    <p>∏∂¿Ã ∆˜∆Æ∆˙∏Æø¿</p>
                     <div id="cardBody1">
                         <div class="card">
                             <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"  onclick=addStar()>
@@ -48,12 +46,12 @@
                         </div>
                     </div>
                     <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp">
-                        <p class="seeMore">ÎçîÎ≥¥Í∏∞</p>
+                        <p class="seeMore">¥ı∫∏±‚</p>
                     </a>
                 </section>
                 <section>
                     <h2>Portfolio</h2>
-                    <p>Ìè¨Ìä∏Ìè¥Î¶¨Ïò§ Í≤åÏãúÌåê</p>
+                    <p>∆˜∆Æ∆˙∏Æø¿ ∞‘Ω√∆«</p>
                     <div id="cardBody">
                         <c:forEach var="board" items="${boards}">
                             <div class="card">
@@ -67,7 +65,7 @@
                         </c:forEach>
                     </div>
                     <a href="${pageContext.request.contextPath}/front/portfolio-board">
-                        <p class="seeMore">ÎçîÎ≥¥Í∏∞</p>
+                        <p class="seeMore">¥ı∫∏±‚</p>
                     </a>
                 </section>
             </article>

@@ -17,11 +17,12 @@ public class LoginController implements Controller {
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
 
         ModelAndView modelAndView = new ModelAndView();
+        Session session = new Session(request);
 
         if(url.equals("/login/")) {
 
             // 로그인 되어 있는지 검사
-            if(request.getSession().getAttribute("member") == null) {
+            if(!session.isLogin()) {
                 // 정상 : 로그인 되어 있지 않은 경우
 
                 Member member = loginService.login(request.getParameter("email"), request.getParameter("password"));
