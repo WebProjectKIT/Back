@@ -15,11 +15,11 @@
 
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="${pageContext.request.contextPath}/view/seeAll.jsp" class="navItem">All Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/portfolio-board" class="navItem">All Portfolio</a>
             <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp" class="navItem">My Portfolio</a>
             <a href="${pageContext.request.contextPath}/view/profile.jsp" class="navItem">My page</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
-                <img src="asset/git-squared.png"></a>
+                <img src="${pageContext.request.contextPath}/view/asset/git-squared.png"></a>
         </div>
 
         <div id="main">
@@ -33,10 +33,7 @@
             <article>
                 <section>
                     <h2>My Portfolio</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam natus
-                        provident voluptates deleniti, deserunt alias nam similique porro nostrum
-                        asperiores maxime voluptatibus odit possimus nesciunt recusandae veniam
-                        aspernatur? Hic.</p>
+                    <p>마이 포트폴리오</p>
                     <div id="cardBody1">
                         <div class="card">
                             <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"  onclick=addStar()>
@@ -54,10 +51,7 @@
                 </section>
                 <section>
                     <h2>Portfolio</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi aliquam natus
-                        provident voluptates deleniti, deserunt alias nam similique porro nostrum
-                        asperiores maxime voluptatibus odit possimus nesciunt recusandae veniam
-                        aspernatur? Hic.</p>
+                    <p>포트폴리오 게시판</p>
                     <div id="cardBody">
 
                         <div class="card">
@@ -70,7 +64,7 @@
                             <div class="from">made BY HJ</div>
                         </div>
                     </div>
-                    <a href="${pageContext.request.contextPath}/view/seeAll.jsp">
+                    <a href="${pageContext.request.contextPath}/front/portfolio-board">
                         <p class="seeMore">더보기</p>
                     </a>
                 </section>

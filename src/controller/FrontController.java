@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sound.sampled.Port;
 
 @WebServlet(name = "frontController", urlPatterns = "/front/*")
 public class FrontController extends HttpServlet{
@@ -18,6 +19,7 @@ public class FrontController extends HttpServlet{
 	
 	public FrontController() {
 		controllerMap.put("login", new LoginController());
+		controllerMap.put("portfolio-board", new PortfolioBoardController());
 	}
 
 	@Override
@@ -26,6 +28,7 @@ public class FrontController extends HttpServlet{
 		String conPath = request.getContextPath();
 		conPath += "/front";
 		String com = uri.substring(conPath.length());
+		System.out.println("com : " + com);
 
 		if (com.equals("/")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/main.jsp");

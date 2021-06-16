@@ -25,7 +25,14 @@
     transform:rotate(-90deg);
 }
 
-@media screen and (max-width: 768px), (max-height:1024) {
+footer{
+    margin-top:50px;
+    color:white;
+    background-color: black;
+    padding:5%;
+}
+
+@media screen and (max-width: 768px), (max-height:1024px) {
     .arrow{
         display: inline;
     }
