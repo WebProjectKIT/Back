@@ -10,13 +10,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class PortfolioBoardController implements Controller {
+
+    private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
+
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
         //GET, POST
         if(url.equals("/portfolio-board")) {
             if(request.getMethod().equals("GET")) {
-                ArrayList<PortfolioBoard> boards = PortfolioBoardService.findBoards();
+                ArrayList<PortfolioBoard> boards = portfolioBoardService.findBoards();
                 modelAndView.setViewName("portfolioBoard");
                 modelAndView.getModel().put("boards", boards);
             }

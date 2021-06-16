@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-         pageEncoding="EUC-KR"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix= "c" uri= "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -26,25 +28,25 @@
             <span onclick="openNav()">&#9776;
             </span>
             <header>
-
 <%--                <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">--%>
             </header>
 
             <article>
                 <section>
                     <h2>Portfolio</h2>
-                    <p>ΖχΖ®ΖϊΈ®Ώΐ °Τ½ΓΖΗ</p>
+                    <p>ν¬νΈν΄λ¦¬μ¤ κ²μ‹ν</p>
 
                     <div id="cardBody">
-                        <div class="card">
-                            <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png" onclick=addStar()>
-                            <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
-                            <h1>Project1</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In quo perferendis
-                                placeat fuga voluptatem. Itaque, in! Quos debitis similique sunt? Non tempora
-                                iste libero quidem aliquid molestiae commodi omnis eum!</p>
-                            <div class="from">made BY HJ</div>
-                        </div>
+                        <c:forEach var="board" items="${boards}">
+                            <div class="card">
+                                <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png" onclick=addStar()>
+                                <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
+                                <h1>${board.title}</h1>
+                                <p>${board.creationDate}</p>
+                                <p>${board.view}</p>
+                                <div class="from">made BY ${board.email}</div>
+                            </div>
+                        </c:forEach>
                     </div>
                 </section>
                 <div class="pagination">
