@@ -27,6 +27,7 @@ public class FrontController extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String uri = request.getRequestURI();
 		String conPath = request.getContextPath();
 		conPath += "/front";
@@ -35,20 +36,28 @@ public class FrontController extends HttpServlet{
 		if (com.equals("/")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/view/main.jsp");
 			dispatcher.forward(request, response);
+
 		} else {
+
 			String[] tokens = com.split("/");
 			String domain = tokens[1];
 			Controller controller = controllerMap.get(domain);
+
 			if (controller == null) {
 				response.setStatus(HttpServletResponse.SC_ACCEPTED);
 			}
+
 			ModelAndView mv = controller.process(request, response, com);
+
 			if (mv.getStatus() != HttpServletResponse.SC_OK) {
 				// 예외처리
 			}
+
 			String viewPath = viewResolver(mv.getViewName());
+
 			View view = new View(viewPath);    // viewPath 물리 이름 변환 필요
 			view.render(mv.getModel(), request, response);
+
 		}
 	}
 
