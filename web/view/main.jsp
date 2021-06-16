@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-         pageEncoding="EUC-KR"%>
+<%@page import="java.util.List"%>
+<%@taglib prefix= "c" uri= "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +35,7 @@
             <article>
                 <section>
                     <h2>My Portfolio</h2>
-                    <p>Έ¶ΐΜ ΖχΖ®ΖϊΈ®Ώΐ</p>
+                    <p>λ§μ΄ ν¬νΈν΄λ¦¬μ¤</p>
                     <div id="cardBody1">
                         <div class="card">
                             <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"  onclick=addStar()>
@@ -46,12 +48,12 @@
                         </div>
                     </div>
                     <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp">
-                        <p class="seeMore">΄υΊΈ±β</p>
+                        <p class="seeMore">λ”λ³΄κΈ°</p>
                     </a>
                 </section>
                 <section>
                     <h2>Portfolio</h2>
-                    <p>ΖχΖ®ΖϊΈ®Ώΐ °Τ½ΓΖΗ</p>
+                    <p>ν¬νΈν΄λ¦¬μ¤ κ²μ‹ν</p>
                     <div id="cardBody">
                         <c:forEach var="board" items="${boards}">
                             <div class="card">
@@ -65,7 +67,7 @@
                         </c:forEach>
                     </div>
                     <a href="${pageContext.request.contextPath}/front/portfolio-board">
-                        <p class="seeMore">΄υΊΈ±β</p>
+                        <p class="seeMore">λ”λ³΄κΈ°</p>
                     </a>
                 </section>
             </article>
