@@ -31,17 +31,17 @@
             </header>
             <article>
                 <section class="login-input-section-wrap">
-                    <form name = loginform method = post>
+                    <form name = loginform method = post action="/front/login/">
                     <div class = "login_input">
                         <span>아이디</span>
                         <div class="login-input-wrap">	
-                            <input type="text" name="user_id" placeholder="Username" type="text">
+                            <input type="text" name="email" placeholder="Username" type="text">
                         </div>
                     </div>
                     <div class = "login_input">
                     <span>비밀번호</span>
                         <div class="login-input-wrap password-wrap">	
-                            <input type="password" name="pass_id" placeholder="Password" type="password"></input>
+                            <input type="password" name="password" placeholder="Password" type="password"></input>
                         </div>
                     </div>
                     <button onclick="check()" class="loginBtn">Login</button>
