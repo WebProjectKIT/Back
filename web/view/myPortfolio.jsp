@@ -11,9 +11,9 @@
     <body>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="./main.html" class="navItem">Main</a>
-            <a href="./seeAll.html" class="navItem">All Portfolio</a>
-            <a href="./profile.html" class="navItem">My page</a>
+            <a href="main.jsp" class="navItem">Main</a>
+            <a href="seeAll.jsp" class="navItem">All Portfolio</a>
+            <a href="profile.jsp" class="navItem">My page</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="asset/git-squared.png"></a>
         </div>
@@ -33,20 +33,33 @@
                         aspernatur? Hic.</p>
                     <div id="cardBody">
                         <div class="card">
-                            <img class="star" src="asset/star_blank.png">
-                            <img class="cancel" src="asset/cancel.png">
+                            <img class="star" src="asset/star_blank.png" onclick=addStar()>
+                            <img class="cancel" src="asset/cancel.png" onclick=cancel()>
                             <img src="asset/typewriter-801921_1920.jpg">
                             <h1>Project1</h1>
                             <p>어떻게 밑으로 내리지 아아아아아아ㅏ아아아아아아아</p>
                             <div class="from">made BY HJ</div>
                         </div>
+                        <div class="card">
+                            <img class="star" src="asset/star_blank.png" onclick=addStar()>
+                            <img class="cancel" src="asset/cancel.png" onclick=cancel()>
+                            <img src="asset/typewriter-801921_1920.jpg">
+                            <h1>Project2</h1>
+                            <p>어떻게 밑으로 내리지 아아아아아아ㅏ아아아아아아아</p>
+                            <div class="from">made BY HJ</div>
+                        </div>
                     </div>
-                    <p class="addMine" id="openBtn">내 포트폴리오 추가하기</p>
+                    <p class="addMine" id="openBtn">글쓰기</p>
                     <div id="modal">
+                        <form method="POST">
                         <h1>포트폴리오 추가</h1>
                         <div>
                             <label for="title">제목</label>
                             <input type="text" id="title" name="title"></div>
+                        <div class="form-group">
+                            <label for="content">내용</label>
+                            <textarea class="form-control" rows="10" id="content" name="content"></textarea>
+                        </div>
                         <div>
                             <label for="link">링크</label>
                             <input type="text" id="link" name="link"></div>
@@ -54,6 +67,7 @@
                             <label for="about">설명</label>
                             <input type="text" id="about" name="about"></div>
                         <button onclick=getEle()>추가하기</button>
+                        </form>
                         <a class="closeBtn"><img src="./asset/cancel.png"></a>
                     </div>
 

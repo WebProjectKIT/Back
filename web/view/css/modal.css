@@ -56,6 +56,12 @@
     color:white;
 }
 
+.form-control{
+    padding:5px;
+    border-radius: 10px;
+    width:80%;
+    margin-left:10px;
+}
 
 @media screen and (max-width: 768px), (max-height:1024){
     #modal{
