@@ -51,8 +51,6 @@
                 <div class="cardBody">
                     <c:forEach var="myPortolioBoard" items="${myPortolioBoard}">
                         <div class="card">
-                            <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"
-                                 onclick=addStar()>
                             <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
                             <h1><a href="/front/portfolio-board/detail/?id=${myPortolioBoard.postingId}">${myPortolioBoard.title}</a></h1>
                             <p>${myPortolioBoard.creationDate}</p>
@@ -93,8 +91,6 @@
             <div class="cardBody">
                 <c:forEach var="board" items="${boards}">
                     <div class="card">
-                        <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"
-                             onclick=addStar()>
                         <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
                         <h1><a href="/front/portfolio-board/detail/?id=${board.postingId}">${board.title}</a></h1>
                         <p>${board.creationDate}</p>
