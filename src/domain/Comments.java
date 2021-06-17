@@ -11,6 +11,9 @@ public class Comments {
   private java.sql.Timestamp creationDate;
   private String contents;
 
+  public Comments() {
+  }
+
   public Comments(long commentId, String email, long postingId, Timestamp creationDate, String contents) {
     this.commentId = commentId;
     this.email = email;
