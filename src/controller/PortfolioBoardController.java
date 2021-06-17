@@ -32,8 +32,11 @@ public class PortfolioBoardController implements Controller {
             }
         } else if (url.equals("/portfolio-board/detail")) {
             PortfolioBoard post = portfolioBoardService.findPostById(Long.parseLong(request.getParameter("id")));
+            ArrayList<Comments> comments = commentService.findCommentOfPost(Long.parseLong(request.getParameter("id")));
             modelAndView.setLink("boardDetail");
             modelAndView.getModel().put("post", post);
+            modelAndView.getModel().put("comments", comments);
+
         } else if (url.equals("/portpolio-board/register")) {
             String title = request.getParameter("title");
             String contents = request.getParameter("contents");

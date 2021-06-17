@@ -1,7 +1,12 @@
 <jsp:useBean id="post" scope="request" type="domain.PortfolioBoard"/>
+<%--<jsp:useBean id="comment" scope="request" type="domain.Comments" />--%>
 <jsp:setProperty name="post" property="*"/>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-         pageEncoding="EUC-KR" %>
+<%--<jsp:setProperty name="comment" property="*" />--%>
+
+<%@page import="java.util.List"%>
+<%@taglib prefix= "c" uri= "http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -35,9 +40,9 @@
         <section class="detail-design">
             <h2>${post.title}</h2>
             <div class="content-info">
-                ÀÛ¼ºÀÚ <span>${post.email}</span></p>
-                ÀÛ¼º½Ã°£ <span>${post.creationDate}</span>
-                Á¶È¸¼ö <span>${post.view}</span>
+                ì‘ì„±ì <span>${post.email}</span></p>
+                ì‘ì„±ì‹œê°„ <span>${post.creationDate}</span>
+                ì¡°íšŒìˆ˜ <span>${post.view}</span>
             </div>
             <div id="content">
                 <p>${post.contents}</p>
@@ -51,31 +56,26 @@
                     <div>
                         <form id="comment-form" method="post" action="/front/portfolio-board/comment-register?id=${post.postingId}">
                             <textarea id="comment-add" name="content" row=4 form="comment-form"></textarea>
-                            <button onclick="submitComment()" type="submit" class="submitBtn">ÀÛ¼º</button>
+                            <button onclick="submitComment()" type="submit" class="submitBtn">ì‘ì„±</button>
                         </form>
                     </div>
-                    <div class="comment-row">
-                        <div class="comment-date">2020-06-15 17:10</div>
-                        <div class="comment-content">
-                            dddddddddddddddddddddddddddddddddddddddddddddddddddddd¤±¤¤¤«¤¤¤©¤·¤·¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+                    <c:forEach var="comment" items="${comments}">
+                        <div class="comment-row">
+                            <div class="comment-date">${comment.creationDate}</div>
+                            <div>ì‘ì„±ì : ${comment.email}</div>
+                            <div class="comment-content">
+                                ${comment.contents}
+                            </div>
                         </div>
-                    </div>
-                    <div class="comment-row">
-                        <div class="comment-date">2020-06-15 17:10</div>
-                        <div class="comment-content">¾Æ°úÁ¦ÇÏ±âÁøÂ¥½È´Ù</div>
-                    </div>
-                    <div class="comment-row">
-                        <div class="comment-date">2020-06-15 17:10</div>
-                        <div class="comment-content">¾Æ°úÁ¦ÇÏ±âÁøÂ¥½È´Ù</div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
 
         </section>
         <div class="back">
-            <button class="back_btn" onclick="goBack()">ÀÌÀü ÆäÀÌÁö</button>
+            <button class="back_btn" onclick="goBack()">ì´ì „ í˜ì´ì§€</button>
             <form method="post" action="/front/portfolio-board/delete?id=${post.postingId}">
-                <button class="back_btn">»èÁ¦</button>
+                <button class="back_btn">ì‚­ì œ</button>
             </form>
         </div>
     </article>
