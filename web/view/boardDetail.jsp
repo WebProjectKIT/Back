@@ -84,6 +84,12 @@
                                     <button class="back_btn">삭제</button>
                                 </form>
                             </c:if>
+
+                            <form method="post" action="/front/portfolio-board/comment-delete/?id=${comment.commentId}">
+
+
+
+
                         </div>
                     </c:forEach>
                 </div>

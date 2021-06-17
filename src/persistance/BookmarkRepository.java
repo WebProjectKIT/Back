@@ -74,8 +74,55 @@ public class BookmarkRepository {
         }
 
 
-
         return list;
     }
+
+
+    public boolean isBookmarked(String email, int postingID){
+
+        boolean result = false;
+
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT * FROM BOOKMARK WHERE email = ? AND posting_id = ?";
+
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setInt(2, postingID);
+
+            rs = pstmt.executeQuery();
+
+            if(rs.next()) result = true;
+
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+                if(rs != null) rs.close();
+                if(pstmt != null) pstmt.close();
+                if(conn != null) conn.close();
+
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+
+            }
+
+        }
+
+
+
+        return result;
+    }
+
+
 
 }
