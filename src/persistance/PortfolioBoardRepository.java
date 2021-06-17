@@ -292,4 +292,52 @@ public class PortfolioBoardRepository {
         }
         return boards;
     }
+
+
+    public ArrayList<PortfolioBoard> getMyPortfolio(String memberId) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "SELECT * FROM PORTFOLIO_BOARD WHERE (email=?)";
+
+        ArrayList<PortfolioBoard> myPortfolioBoard = new ArrayList<PortfolioBoard>();
+
+        try {
+            conn = ds.getConnection();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, memberId);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int postingId = rs.getInt("posting_id");
+                String email = rs.getString("email");
+                int portfolioId = rs.getInt("portfolio_id");
+                String title = rs.getString("title");
+                String contents = rs.getString("contents");
+                Timestamp creationDate = rs.getTimestamp("creation_date");
+                int view = rs.getInt("view");
+                PortfolioBoard board = new PortfolioBoard(postingId, email, portfolioId, title, contents, creationDate, view);
+                myPortfolioBoard.add(board);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return myPortfolioBoard;
+    }
 }

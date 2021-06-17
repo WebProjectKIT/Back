@@ -11,6 +11,7 @@
         <jsp:include page="/view/css/navi.css" />
         <jsp:include page="/view/css/cardview.css" />
         <jsp:include page="/view/css/modal.css" />
+        <jsp:include page="/view/css/main.css" />
         <jsp:include page="/view/css/pagination.css" />
     </style>
     <script>

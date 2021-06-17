@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+ul{
+    padding: 0px;
+}
+
 .pagination>li{
     font-size : 20px;
     padding:15px;
@@ -38,14 +42,15 @@ footer{
     padding:5%;
 }
 
-@media screen and (max-width: 768px), (max-height:1024px) {
+@media screen and (max-width: 768px) {
     .arrow{
         display: inline;
     }
 
-    .pagination>span{
+    .pagination>li{
         font-size : 15px;
         padding:9px;
+        list-style: none;
     }
     
     .arrow{

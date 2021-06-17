@@ -17,7 +17,7 @@ public class FrontController extends HttpServlet {
     private final Session session = new Session();
 
     public FrontController() {
-        controllerMap.put("main", new MainPageController());
+        controllerMap.put("main", new MainPageController(session));
         controllerMap.put("login", new LoginController(session));
         controllerMap.put("my-page", new MypageController(session));
         controllerMap.put("my-portfolio", new MyPortfolioController(session));
