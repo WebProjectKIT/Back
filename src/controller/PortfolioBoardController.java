@@ -1,18 +1,14 @@
 package controller;
 
 import domain.Comments;
-import domain.Portfolio;
 import domain.PortfolioBoard;
 import service.CommentService;
-import service.MyPortfolioService;
 import service.PortfolioBoardService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class PortfolioBoardController implements Controller {
@@ -23,7 +19,7 @@ public class PortfolioBoardController implements Controller {
 
     private final Session session;
 
-    public PortfolioBoardController(Session session){
+    public PortfolioBoardController(Session session) {
         this.session = session;
     }
 
@@ -31,13 +27,19 @@ public class PortfolioBoardController implements Controller {
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
+        request.setAttribute("member", session.getMember());
         //GET, POST
         if (url.equals("/portfolio-board/")) {
             if (request.getMethod().equals("GET")) {
-                ArrayList<PortfolioBoard> boards = portfolioBoardService.findBoards();
-                modelAndView.setLink("portfolioBoard");
-                modelAndView.getModel().put("boards", boards);
+                int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 
+                Paging paging = portfolioBoardService.getPagingInfo(page);
+                page = (page - 1) * 3;
+                ArrayList<PortfolioBoard> boards = portfolioBoardService.getBoardList(page, paging.getPageSize());
+
+                modelAndView.setLink("portfolioBoard");
+                modelAndView.getModel().put("paging", paging);
+                modelAndView.getModel().put("boards", boards);
             } else if (request.getMethod().equals("POST")) {
 
             }
@@ -78,6 +80,10 @@ public class PortfolioBoardController implements Controller {
             commentService.write(comments);
             modelAndView.setLink("main");
 
+        } else if (url.equals("/portfolio-board/comment-delete/")) {
+            commentService.delete(Long.parseLong(request.getParameter("id")));
+            // TODO redirect 필요?
+            modelAndView.setLink("main");
         } else {
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

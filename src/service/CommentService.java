@@ -19,4 +19,8 @@ public class CommentService {
     public ArrayList<Comments> findCommentOfPost(long id) {
         return commentsRepository.findAllCommentOfPost(id);
     }
+
+    public void delete(long id) {
+        commentsRepository.deleteById(id);
+    }
 }

@@ -2,13 +2,19 @@
     display: flex;
     width:100%;
     text-align: center;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
-.pagination>span{
-    font-size : 30px;
+.pagination>li{
+    font-size : 20px;
     padding:15px;
+    list-style: none;
+}
+.pagination>li>a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
 .arrow{

@@ -2,6 +2,7 @@ package controller;
 
 import domain.PortfolioBoard;
 import service.MainPageService;
+import service.PortfolioBoardService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 public class MainPageController implements Controller {
 
     private final MainPageService mainPageService = new MainPageService();
+    private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
 
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
@@ -19,8 +21,7 @@ public class MainPageController implements Controller {
 
         if(url.equals("/")) {
             if(request.getMethod().equals("GET")) {
-                ArrayList<PortfolioBoard> boards = mainPageService.findBoards();
-//                ArrayList<PortfolioBoard>
+                ArrayList<PortfolioBoard> boards = portfolioBoardService.getBoardList(0, 3);
                 modelAndView.setLink("main");
                 modelAndView.getModel().put("boards", boards);
             }

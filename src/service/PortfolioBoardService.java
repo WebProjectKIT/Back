@@ -1,5 +1,6 @@
 package service;
 
+import controller.Paging;
 import domain.PortfolioBoard;
 import persistance.PortfolioBoardRepository;
 
@@ -26,5 +27,20 @@ public class PortfolioBoardService {
 
     public void delete(long id) {
         portfolioBoardRepository.deleteById(id);
+    }
+
+    public Paging getPagingInfo(int page) {
+        Paging paging = new Paging();
+        int totalCount = portfolioBoardRepository.getTotalBoardCount();
+
+        paging.setPageNo(page);
+        paging.setPageSize(3);
+        paging.setTotalCount(totalCount);
+
+        return paging;
+    }
+
+    public ArrayList<PortfolioBoard> getBoardList(int page, int pageSize) {
+        return portfolioBoardRepository.getChunkList(page, pageSize);
     }
 }
