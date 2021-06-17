@@ -61,10 +61,12 @@ function cancel() {
 
 function addStar() {
     let target = event.currentTarget;
-    
-    //img src로 판단하는 것인데 기준을 좀 더 생각해봐야할 듯 
-    if (target.src === "/view/asset/star.png") {
-        target.src = "/view/asset/star_balnk.png";
+
+    //img src로 판단하는 것인데 기준을 좀 더 생각해봐야할 듯
+    tmp = "http://localhost:" + location.port + "/view/asset/star.png"
+
+    if (target.src === tmp) {
+        target.src = "/view/asset/star_blank.png";
     } else {
         target.src = "/view/asset/star.png";
     }
