@@ -1,6 +1,8 @@
 package controller;
 
+import domain.Comments;
 import domain.PortfolioBoard;
+import service.CommentService;
 import service.PortfolioBoardService;
 
 import javax.servlet.ServletException;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class PortfolioBoardController implements Controller {
 
     private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
+    private final CommentService commentService = new CommentService();
 
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
@@ -44,6 +47,13 @@ public class PortfolioBoardController implements Controller {
             portfolioBoardService.delete(Long.parseLong(request.getParameter("id")));
             // TODO redirect 필요?
             modelAndView.setViewName("main");
+        } else if (url.equals("/portfolio-board/comment-register")) {
+            String contents = request.getParameter("contents");
+
+
+            Comments comments = new Comments();
+            comments.setContents(contents);
+            commentService.write(comments);
         } else {
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

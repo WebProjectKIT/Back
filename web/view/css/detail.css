@@ -52,6 +52,7 @@
 
 .back {
     text-align: center;
+    display: flex;
 }
 
 .back_btn {
