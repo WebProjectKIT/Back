@@ -1,6 +1,8 @@
 package service;
 
+import controller.Paging;
 import domain.Portfolio;
+import domain.PortfolioBoard;
 import persistance.PortfolioRepository;
 
 import java.util.ArrayList;
@@ -30,4 +32,21 @@ public class MyPortfolioService {
         portfolioRepository.write(email, title, link);
 
     }
+
+
+    public Paging getPagingInfo(int page, String email) {
+        Paging paging = new Paging();
+        int totalCount = portfolioRepository.getTotalMyPortfolioCount(email);
+
+        paging.setPageNo(page);
+        paging.setPageSize(3);
+        paging.setTotalCount(totalCount);
+
+        return paging;
+    }
+
+    public ArrayList<Portfolio> getBoardList(int page, int pageSize, String email) {
+        return portfolioRepository.getChunkList(page, pageSize, email);
+    }
+
 }

@@ -129,12 +129,9 @@ public class PortfolioRepository {
         PreparedStatement pstmt = null;
 
         String sql = "INSERT INTO PORTFOLIO(email, title, link) values(?,?,?)";
+
         try {
             conn = ds.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try {
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
             pstmt.setString(2, title);
@@ -154,4 +151,96 @@ public class PortfolioRepository {
         }
 
     }
+
+
+
+    public int getTotalMyPortfolioCount(String email) {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        PreparedStatement pstmt = null;
+
+        int total = 0;
+
+        String sql = "SELECT count(*) FROM PORTFOLIO WHERE email = ?";
+
+
+        try {
+
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                total = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return total;
+    }
+
+    public ArrayList<Portfolio> getChunkList(int start, int end, String email) {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        PreparedStatement pstmt = null;
+
+        String sql = "SELECT * FROM PORTFOLIO WHERE email = ? ORDER BY portfolio_id DESC LIMIT " + start + "," + end;
+
+        ArrayList<Portfolio> myPortfolio = new ArrayList<>();
+
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int portfolioId = rs.getInt("portfolio_id");
+                String title = rs.getString("title");
+                String link = rs.getString("link");
+                Timestamp creationDate = rs.getTimestamp("creation_date");
+
+
+                Portfolio portfolio = new Portfolio(portfolioId, email, title, link, null, creationDate);
+
+                myPortfolio.add(portfolio);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+                rs.close();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
+        return myPortfolio;
+    }
+
+
+
+
 }

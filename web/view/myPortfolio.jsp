@@ -15,6 +15,11 @@
             <jsp:include page="/view/css/modal.css" />
         </style>
 
+        <script>
+            function pageMove(page) {
+                location.href = "/front/my-portfolio/?page=" + page;
+            }
+        </script>
 
     </head>
     <body>
@@ -74,16 +79,22 @@
 
 
 
-
-                <div class="pagination">
-                    <span><img src="/view/asset/arrow-down-sign-to-navigate.png" class="arrow" id="leftArr"></span>
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span><img src="/view/asset/arrow-down-sign-to-navigate.png" class="arrow" id="rightArr"></span>
-                </div>
+                <ul class="pagination">
+                    <li><a href="javascript:pageMove(${paging.firstPageNo})">맨앞으로</a></li>
+                    <li><a href="javascript:pageMove(${paging.prevPageNo})">앞으로</a></li>
+                    <c:forEach var="i" begin="${paging.startPageNo}" end="${paging.endPageNo}" step="1">
+                        <c:choose>
+                            <c:when test="${i eq paging.pageNo}">
+                                <li class="active"><a href="javascript:pageMove(${i})">${i}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="javascript:pageMove(${i})">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    <li><a href="javascript:pageMove(${paging.nextPageNo});">뒤로</a></li>
+                    <li><a href="javascript:pageMove(${paging.finalPageNo});">맨뒤로</a></li>
+                </ul>
             </article>
 
             <footer>WebProjectKIT</footer>
