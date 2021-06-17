@@ -57,7 +57,7 @@
                             <div class="from">made BY HJ</div>
                         </div>
                     </div>
-                    <a href="${pageContext.request.contextPath}/view/myPortfolio.jsp">
+                    <a href="${pageContext.request.contextPath}/front/my-portfolio/">
                         <p class="seeMore">더보기</p>
                     </a>
                 </section>
