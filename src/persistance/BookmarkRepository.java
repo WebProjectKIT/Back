@@ -153,6 +153,37 @@ public class BookmarkRepository {
     }
 
 
+    public void deleteBookmark(String email, int postingID){
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        String sql = "DELETE FROM BOOKMARK WHERE (email=? AND posting_id=?)";
+
+        try {
+
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, email);
+            pstmt.setInt(2, postingID);
+
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            try {
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+
+    }
 
 
 
