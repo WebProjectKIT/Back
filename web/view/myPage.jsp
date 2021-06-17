@@ -1,5 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
          pageEncoding="EUC-KR"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -20,10 +22,15 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="${pageContext.request.contextPath}/front/" class="navItem">Main</a>
-            <a href="${pageContext.request.contextPath}/front/my-portfolio" class="navItem">My Portfolio</a>
-            <a href="${pageContext.request.contextPath}/front/portfolio-board" class="navItem">Portfolio Board</a>
+            <a href="${pageContext.request.contextPath}/front/my-portfolio/" class="navItem">My Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/portfolio-board/" class="navItem">Portfolio Board</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="/view/asset/git-squared.png"></a>
+
+
+            <a href="${pageContext.request.contextPath}/front/login/logout/" class="navItem">logout</a>
+
+
         </div>
         <div id="main">
             <span onclick="openNav()">&#9776;
@@ -52,32 +59,31 @@
                         </ul>
                     </div>
                 </section>
+
                 <section>
-                    <h2>Favorites</h2>
-                    <a href="seeAll.jsp">
+                    <h2>Favorite</h2>
+                    <div id="cardBody">
+                        <c:forEach var="board" items="${boards}">
+                            <div class="card">
+                                <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png" onclick=addStar()>
+                                <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
+                                <h1>${board.title}</h1>
+                                <p>${board.creationDate}</p>
+                                <p>${board.view}</p>
+                                <div class="from">made BY ${board.email}</div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <a href="${pageContext.request.contextPath}/front/portfolio-board/">
                         <p class="seeMore">더보기</p>
                     </a>
-                    <div id="cardBody">
-                        <div class="card">
-                            <img class="star" src="asset/star_blank.png" onclick=addStar()>
-                            <img class="cancel" src="asset/cancel.png" onclick=cancel()>
-                            <img src="/view/asset/typewriter-801921_1920.jpg">
-                            <h1>Project1</h1>
-                            <p>어떻게 밑으로 내리지 아아아아아아ㅏ아아아아아아아</p>
-                            <div class="from">made BY HJ</div>
-                        </div>
-                        <div class="card">
-                            <img class="star" src="asset/star_blank.png" onclick=addStar()>
-                            <img class="cancel" src="asset/cancel.png" onclick=cancel()>
-                            <img src="/view/asset/typewriter-801921_1920.jpg">
-                            <h1>Project2</h1>
-                            <p>어떻게 밑으로 내리지 아아아아아아ㅏ아아아아아아아</p>
-                            <div class="from">made BY HJ</div>
-                            </div>
+
                 </section>
+
             </article>
+
             <footer>WebProjectKIT</footer>
-        </div>
+
 
         <script><jsp:include page="/view/script/main.js"/></script>
         <script><jsp:include page="/view/script/modal.js" /></script>

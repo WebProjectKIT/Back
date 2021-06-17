@@ -1,5 +1,6 @@
 package persistance;
 
+import domain.Portfolio;
 import domain.PortfolioBoard;
 
 import javax.naming.Context;
@@ -18,7 +19,7 @@ public class PortfolioBoardRepository {
     private PortfolioBoardRepository() {
 
     }
-    public static PortfolioBoardRepository getInstacne() {
+    public static PortfolioBoardRepository getInstance() {
         if(instance==null) {
             try {
                 Context context = new InitialContext();
@@ -77,6 +78,29 @@ public class PortfolioBoardRepository {
         }
         return boards;
     }
+
+    public ArrayList<PortfolioBoard> getBookmarkedPortfoliosByIDList(int [] idList) {
+
+        ArrayList<PortfolioBoard> result = new ArrayList<>();
+
+        ArrayList<PortfolioBoard> postingList = findAll();
+
+        for (int idx : idList) {
+
+            for (PortfolioBoard posting : postingList) {  // 모든 포스팅에 대해서
+
+                if (posting.getPostingId() == idx) {    // id 리스트에 존재하는 포스팅일 경우 결과 리스트에 추가
+                    result.add(posting);
+
+                }
+            }
+
+        }
+
+        return result;
+
+    }
+
 
     public PortfolioBoard findById(long id) {
         Connection conn = null;

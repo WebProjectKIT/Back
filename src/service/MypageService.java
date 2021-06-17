@@ -1,17 +1,23 @@
 package service;
 
 import domain.Portfolio;
+import domain.PortfolioBoard;
 import persistance.BookmarkRepository;
+import persistance.PortfolioBoardRepository;
+
+import java.util.ArrayList;
 
 public class MypageService {
 
     private final BookmarkRepository bookmarkRepository = BookmarkRepository.getInstance();
 
-    public Portfolio[] findBookmarkedPortfolios(String email) {
+    private final PortfolioBoardRepository portfolioBoardRepository = PortfolioBoardRepository.getInstance();
 
-        int [] list = bookmarkRepository.getListToEmail(email);
+    public ArrayList<PortfolioBoard>  findBookmarkedPortfolios(String email) {
 
+        int [] list = bookmarkRepository.getListByEmail(email);
 
-        return null;
+        return portfolioBoardRepository.getBookmarkedPortfoliosByIDList(list);
+
     }
 }

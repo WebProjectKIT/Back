@@ -13,19 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "frontController", urlPatterns = "/front/*")
 public class FrontController extends HttpServlet {
 
-    private Map<String, Controller> controllerMap = new HashMap<>();
+    private final Map<String, Controller> controllerMap = new HashMap<>();
+    private final Session session = new Session();
 
     public FrontController() {
         controllerMap.put("main", new MainPageController());
-        controllerMap.put("login", new LoginController());
-        controllerMap.put("my-page", new MypageController());
-        controllerMap.put("my-portfolio", new MyPortfolioController());
-        controllerMap.put("portfolio-board", new PortfolioBoardController());
+        controllerMap.put("login", new LoginController(session));
+        controllerMap.put("my-page", new MypageController(session));
+        controllerMap.put("my-portfolio", new MyPortfolioController(session));
+        controllerMap.put("portfolio-board", new PortfolioBoardController(session));
 
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        session.setSession(request);
 
         String uri = request.getRequestURI();
         String conPath = request.getContextPath();
@@ -53,7 +56,7 @@ public class FrontController extends HttpServlet {
                 // 예외처리
             }
 
-
+            request.setAttribute("isLogin", session.isLogin());
 
             if(mv.getDispatchType()  == View.FORWARD) {
                 String viewPath = viewResolver(mv.getLink());
