@@ -58,7 +58,7 @@ public class FrontController extends HttpServlet {
             String viewPath = viewResolver(mv.getViewName());
 
             View view = new View(viewPath);    // viewPath 물리 이름 변환 필요
-            view.render(mv.getModel(), request, response);
+            view.render(mv.getModel(), request, response, mv.getDispatchType());
         }
 
 
