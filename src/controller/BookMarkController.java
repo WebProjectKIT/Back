@@ -1,18 +1,16 @@
 package controller;
 
-import domain.PortfolioBoard;
-import service.BookMarkService;
+import service.BookmarkService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class BookMarkController implements Controller {
 
     private final Session session;
-    private final BookMarkService bookMarkService = new BookMarkService();
+    private final BookmarkService bookmarkService = new BookmarkService();
 
     public BookMarkController(Session session) {
         this.session = session;
@@ -24,28 +22,41 @@ public class BookMarkController implements Controller {
         ModelAndView modelAndView = new ModelAndView();
 
 
+        if (url.equals("/bookmark/insert/")) {
 
-        if(url.equals("/bookmark/insert/")) {
+            String email = session.getMember().getEmail();
+            int id = Integer.parseInt(request.getParameter("id"));
+
+            System.out.println(email);
+            System.out.println(id);
+
+            bookmarkService.insertBookmark(email, id);
+
+            modelAndView.setLink("/front/");
+            modelAndView.setDispatchType(View.REDIRECT);
+
+        } else if (url.equals("/bookmark/delete/")) {
+
 
             String email = session.getMember().getEmail();
             int id = Integer.parseInt(request.getParameter("id"));
 
 
-            bookMarkService.insertBookmark(email, id);
+            System.out.println(email);
+            System.out.println(id);
 
-        } else if (url.equals("/bookmark/delete/")){
+            bookmarkService.deleteBookmark(email, id);
 
 
-            String email = session.getMember().getEmail();
-            int id = Integer.parseInt(request.getParameter("id"));
-
-            bookMarkService.deleteBookmark(email, id);
-
+            modelAndView.setLink("/front/");
+            modelAndView.setDispatchType(View.REDIRECT);
 
         } else {       // display 404
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
 
         }
 
+        return modelAndView;
     }
+
 }

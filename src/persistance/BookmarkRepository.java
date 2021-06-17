@@ -122,10 +122,13 @@ public class BookmarkRepository {
         return result;
     }
 
-    public void insertBookmark(String email, String postingID){
+    public void insertBookmark(String email, int postingID){
 
         Connection conn = null;
         PreparedStatement pstmt = null;
+
+        System.out.println("repo");
+        System.out.println(postingID);
 
         String sql = "INSERT INTO BOOKMARK(email, posting_id) values(?,?)";
 
@@ -133,7 +136,7 @@ public class BookmarkRepository {
             conn = ds.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, email);
-            pstmt.setString(2, postingID);
+            pstmt.setInt(2, postingID);
 
             pstmt.executeUpdate();
 
@@ -158,7 +161,7 @@ public class BookmarkRepository {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
-        String sql = "DELETE FROM BOOKMARK WHERE (email=? AND posting_id=?)";
+        String sql = "DELETE FROM BOOKMARK WHERE (email=?) AND (posting_id=?)";
 
         try {
 
@@ -168,6 +171,7 @@ public class BookmarkRepository {
             pstmt.setString(1, email);
             pstmt.setInt(2, postingID);
 
+            pstmt.executeUpdate();
 
         }catch(SQLException e) {
             e.printStackTrace();

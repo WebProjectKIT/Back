@@ -16,7 +16,7 @@ public class MypageService {
     public ArrayList<PortfolioBoard>  findBookmarkedPortfolios(String email) {
 
         int [] list = bookmarkRepository.getListByEmail(email);
-
+        System.out.println(list.length);
         return portfolioBoardRepository.getBookmarkedPortfoliosByIDList(list);
 
     }

@@ -87,11 +87,11 @@ public class PortfolioBoardRepository {
 
         ArrayList<PortfolioBoard> postingList = findAll();
 
-        for (int idx : idList) {
+        for (int id : idList) {
 
             for (PortfolioBoard posting : postingList) {  // 모든 포스팅에 대해서
 
-                if (posting.getPostingId() == idx) {    // id 리스트에 존재하는 포스팅일 경우 결과 리스트에 추가
+                if (posting.getPostingId() == id) {    // id 리스트에 존재하는 포스팅일 경우 결과 리스트에 추가
                     result.add(posting);
 
                 }

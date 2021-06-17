@@ -38,6 +38,7 @@ public class MypageController implements Controller  {
                 modelAndView.getModel().put("member", member);
 
                 ArrayList<PortfolioBoard> bookmarkedPortfolios = mypageService.findBookmarkedPortfolios(member.getEmail());
+                System.out.println(bookmarkedPortfolios.size());
 
                 modelAndView.getModel().put("boards", bookmarkedPortfolios);
 

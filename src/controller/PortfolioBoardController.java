@@ -3,7 +3,7 @@ package controller;
 import domain.Comments;
 import domain.Portfolio;
 import domain.PortfolioBoard;
-import service.BookMarkService;
+import service.BookmarkService;
 import service.CommentService;
 import service.MyPortfolioService;
 import service.PortfolioBoardService;
@@ -19,7 +19,7 @@ public class PortfolioBoardController implements Controller {
     private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
     private final CommentService commentService = new CommentService();
     private final MyPortfolioService myPortfolioService = new MyPortfolioService();
-    private final BookMarkService bookMarkService = new BookMarkService();
+    private final BookmarkService bookMarkService = new BookmarkService();
 
     private final Session session;
 

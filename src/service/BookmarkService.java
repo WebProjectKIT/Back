@@ -3,11 +3,11 @@ package service;
 
 import persistance.BookmarkRepository;
 
-public class BookMarkService {
+public class BookmarkService {
 
     private final BookmarkRepository bookmarkRepository = BookmarkRepository.getInstance();
 
-    public BookMarkService() {
+    public BookmarkService() {
 
     }
 
@@ -17,10 +17,12 @@ public class BookMarkService {
     }
 
     public void insertBookmark(String email, int id) {
+        System.out.println("service");
         bookmarkRepository.insertBookmark(email, id);
     }
 
     public void deleteBookmark(String email, int id) {
+        System.out.println("delete service");
         bookmarkRepository.deleteBookmark(email, id);
     }
 }

@@ -97,13 +97,13 @@
             <button class="back_btn" onclick="goBack()">이전 페이지</button>
 
             <c:if test = "${checkBookMark}">
-            <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
+            <form method="post" action="/front/bookmark/delete/?id=${post.postingId}">
                 <button class="back_btn">즐겨찾기 제거</button>
             </form>
             </c:if>
 
             <c:if test = "${!checkBookMark}">
-                <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
+                <form method="post" action="/front/bookmark/insert/?id=${post.postingId}">
                     <button class="back_btn">즐겨찾기 추가</button>
                 </form>
             </c:if>
