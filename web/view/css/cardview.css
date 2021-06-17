@@ -31,12 +31,12 @@
     border-radius: 30px;
 }
 
-.card>.cancel{
+.card>a>.cancel{
     cursor: pointer;
     width:25px;
     height: 25px;
     position:absolute;
-    margin:40px 5px 5px 5px ;
+    margin:5px;
     background-color: white;
     padding:2px;
     border-radius: 30px;

@@ -54,11 +54,6 @@ function getEle() {
     cardBody.appendChild(newDiv);
 }
 
-function cancel() {
-    let target = event.currentTarget.parentNode;
-    target.remove();
-}
-
 function addStar() {
     let target = event.currentTarget;
 

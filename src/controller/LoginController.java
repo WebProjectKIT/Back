@@ -64,7 +64,6 @@ public class LoginController implements Controller {
 
 
         } else {       // display 404
-
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
 
         }
