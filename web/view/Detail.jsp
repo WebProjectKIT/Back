@@ -5,17 +5,24 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./css/navi.css">
-        <link rel="stylesheet" href="./css/main.css">
-        <link rel="stylesheet" href="./css/pagination.css">
-        <link rel="stylesheet" href="./css/detail.css">
+
+        <style>
+            <jsp:include page="/view/css/navi.css" />
+            <jsp:include page="/view/css/main.css" />
+            <jsp:include page="/view/css/pagination.css" />
+            <jsp:include page="/view/css/detail.css" />
+        </style>
+
     </head>
     <body>
         <div id="mySidenav" class="sidenav">
+
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="main.jsp" class="navItem">Main</a>
-            <a href="myPortfolio.jsp" class="navItem">My Portfolio</a>
-            <a href="myPage.jsp" class="navItem">My page</a>
+
+            <a href="${pageContext.request.contextPath}/front/main" class="navItem">Main</a>
+            <a href="${pageContext.request.contextPath}/front/my-portfolio" class="navItem">My Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/portfolio-board" class="navItem">Portfolio Board</a>
+
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="asset/git-squared.png"></a>
         </div>
@@ -74,7 +81,9 @@
             <footer>WebProjectKIT</footer>
 
         </div>
-        <script src="./script/detail.js"></script>
-        <script src="./script/main.js"></script>
+
+        <script><jsp:include page="/view/script/detail.js"/></script>
+        <script><jsp:include page="/view/script/main.js" /></script>
+
     </body>
 </html>
