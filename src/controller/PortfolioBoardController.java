@@ -3,6 +3,7 @@ package controller;
 import domain.Comments;
 import domain.Portfolio;
 import domain.PortfolioBoard;
+import service.BookMarkService;
 import service.CommentService;
 import service.MyPortfolioService;
 import service.PortfolioBoardService;
@@ -18,6 +19,7 @@ public class PortfolioBoardController implements Controller {
     private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
     private final CommentService commentService = new CommentService();
     private final MyPortfolioService myPortfolioService = new MyPortfolioService();
+    private final BookMarkService bookMarkService = new BookMarkService();
 
     private final Session session;
 
@@ -52,9 +54,12 @@ public class PortfolioBoardController implements Controller {
         } else if (url.equals("/portfolio-board/detail/")) {
             PortfolioBoard post = portfolioBoardService.findPostById(Long.parseLong(request.getParameter("id")));
             ArrayList<Comments> comments = commentService.findCommentOfPost(Long.parseLong(request.getParameter("id")));
+            boolean checkBookMark = bookMarkService.checkBookMark(session.getMember().getEmail(), Integer.parseInt(request.getParameter("id")));
+
             modelAndView.setLink("boardDetail");
             modelAndView.getModel().put("post", post);
             modelAndView.getModel().put("comments", comments);
+            modelAndView.getModel().put("checkBookMark", checkBookMark);
 
         } else if (url.equals("/portfolio-board/register/")) {
             String title = request.getParameter("title");

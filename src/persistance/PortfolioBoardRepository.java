@@ -302,7 +302,7 @@ public class PortfolioBoardRepository {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        String sql = "SELECT * FROM PORTFOLIO_BOARD WHERE (email=?)";
+        String sql = "SELECT * FROM PORTFOLIO_BOARD WHERE (email=?) ORDER BY portfolio_id DESC LIMIT " + 0 + "," + 3;
 
         ArrayList<PortfolioBoard> myPortfolioBoard = new ArrayList<PortfolioBoard>();
 

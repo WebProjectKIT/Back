@@ -85,9 +85,6 @@
                                 </form>
                             </c:if>
 
-                            <form method="post" action="/front/portfolio-board/comment-delete/?id=${comment.commentId}">
-
-
 
 
                         </div>
@@ -98,6 +95,19 @@
         </section>
         <div class="back">
             <button class="back_btn" onclick="goBack()">이전 페이지</button>
+
+            <c:if test = "${checkBookMark}">
+            <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
+                <button class="back_btn">즐겨찾기 제거</button>
+            </form>
+            </c:if>
+
+            <c:if test = "${!checkBookMark}">
+                <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
+                    <button class="back_btn">즐겨찾기 추가</button>
+                </form>
+            </c:if>
+
             <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
                 <button class="back_btn">삭제</button>
             </form>
