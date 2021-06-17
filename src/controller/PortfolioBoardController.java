@@ -32,22 +32,24 @@ public class PortfolioBoardController implements Controller {
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
         //GET, POST
-        if (url.equals("/portfolio-board")) {
+        if (url.equals("/portfolio-board/")) {
             if (request.getMethod().equals("GET")) {
                 ArrayList<PortfolioBoard> boards = portfolioBoardService.findBoards();
                 modelAndView.setLink("portfolioBoard");
                 modelAndView.getModel().put("boards", boards);
+
             } else if (request.getMethod().equals("POST")) {
 
             }
-        } else if (url.equals("/portfolio-board/detail")) {
+
+        } else if (url.equals("/portfolio-board/detail/")) {
             PortfolioBoard post = portfolioBoardService.findPostById(Long.parseLong(request.getParameter("id")));
             ArrayList<Comments> comments = commentService.findCommentOfPost(Long.parseLong(request.getParameter("id")));
             modelAndView.setLink("boardDetail");
             modelAndView.getModel().put("post", post);
             modelAndView.getModel().put("comments", comments);
 
-        } else if (url.equals("/portpolio-board/register")) {
+        } else if (url.equals("/portpolio-board/register/")) {
             String title = request.getParameter("title");
             String contents = request.getParameter("contents");
 
@@ -56,12 +58,13 @@ public class PortfolioBoardController implements Controller {
 //
 //            portfolioBoardService.write(board);
 //            modelAndView.setViewName("index");
-        } else if (url.equals("/portfolio-board/delete")) {
+
+        } else if (url.equals("/portfolio-board/delete/")) {
             portfolioBoardService.delete(Long.parseLong(request.getParameter("id")));
             // TODO redirect 필요?
             modelAndView.setLink("main");
-        } else if (url.equals("/portfolio-board/comment-register")) {
-            Session session = new Session(request);
+
+        } else if (url.equals("/portfolio-board/comment-register/")) {
             String email = session.getMember().getEmail();
             int postingId = Integer.parseInt(request.getParameter("id"));
             String content = request.getParameter("content");
@@ -74,9 +77,11 @@ public class PortfolioBoardController implements Controller {
 
             commentService.write(comments);
             modelAndView.setLink("main");
+
         } else {
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
+
         return modelAndView;
     }
 }
