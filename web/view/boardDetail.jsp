@@ -79,11 +79,16 @@
                             <div class="comment-content">
                                 ${comment.contents}
                             </div>
+
+
                             <c:if test = "${comment.email == member.email}">
                                 <form method="post" action="/front/portfolio-board/comment-delete/?id=${comment.commentId}">
                                     <button class="back_btn">삭제</button>
                                 </form>
                             </c:if>
+
+
+
                         </div>
                     </c:forEach>
                 </div>
@@ -92,7 +97,12 @@
         </section>
         <div class="back">
             <button class="back_btn" onclick="goBack()">이전 페이지</button>
+
             <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
+                <button class="back_btn">즐겨찾기 추가</button>
+            </form>
+
+           <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
                 <button class="back_btn">삭제</button>
             </form>
         </div>
