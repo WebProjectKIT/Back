@@ -11,12 +11,16 @@ import java.io.IOException;
 public class LoginController implements Controller {
 
     private final LoginService loginService = new LoginService();
+    private Session session;
+
+    public LoginController(Session session){
+        this.session = session;
+    }
 
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
 
         ModelAndView modelAndView = new ModelAndView();
-        Session session = new Session(request);
 
         if(url.equals("/login/")) {
 
@@ -51,7 +55,16 @@ public class LoginController implements Controller {
 
             }
 
+        } else if (url.equals("/login/logout/")){
+
+            request.getSession().removeAttribute("member");
+
+            modelAndView.setLink("/front/");
+            modelAndView.setDispatchType(View.REDIRECT);
+
+
         } else {       // display 404
+
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
 
         }

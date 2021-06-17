@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class MainPageService {
 
-    private final PortfolioBoardRepository portfolioBoardRepository = PortfolioBoardRepository.getInstacne();
+    private final PortfolioBoardRepository portfolioBoardRepository = PortfolioBoardRepository.getInstance();
     public MainPageService() {
 
     }

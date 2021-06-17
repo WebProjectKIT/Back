@@ -19,7 +19,7 @@ public class BookmarkRepository {
         if(instance==null) {
             try {
                 Context context = new InitialContext();
-                ds = (DataSource) context.lookup("java:comp/env/jdbc/mariaDB");
+                ds = (DataSource) context.lookup("java:comp/env/jdbc/mariadb");
                 return instance = new BookmarkRepository();
             } catch (NamingException e) {
                 // TODO Auto-generated catch block
@@ -29,7 +29,7 @@ public class BookmarkRepository {
         return instance;
     }
 
-    public int[] getListToEmail(String email){  // email을 입력받아 해당 유저가 북마크 해 둔 게시글들의 id를 int배열 형태로 반환
+    public int[] getListByEmail(String email){  // email을 입력받아 해당 유저가 북마크 해 둔 게시글들의 id를 int배열 형태로 반환
 
         int [] list = null;
 

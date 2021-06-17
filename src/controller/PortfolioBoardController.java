@@ -13,6 +13,13 @@ public class PortfolioBoardController implements Controller {
 
     private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
 
+    private final Session session;
+
+    public PortfolioBoardController(Session session){
+        this.session = session;
+    }
+
+
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();

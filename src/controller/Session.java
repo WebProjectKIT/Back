@@ -9,7 +9,8 @@ public class Session {
 
     private HttpSession session;
 
-    public Session(HttpServletRequest request){
+
+    void setSession(HttpServletRequest request){
         session = request.getSession();
     }
 

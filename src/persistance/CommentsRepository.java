@@ -16,7 +16,7 @@ public class CommentsRepository {
         if(instance==null) {
             try {
                 Context context = new InitialContext();
-                ds = (DataSource) context.lookup("java:comp/env/jdbc/mariaDB");
+                ds = (DataSource) context.lookup("java:comp/env/jdbc/mariadb");
                 return instance = new CommentsRepository();
             } catch (NamingException e) {
                 // TODO Auto-generated catch block
