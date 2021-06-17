@@ -119,9 +119,40 @@ public class BookmarkRepository {
         }
 
 
-
         return result;
     }
+
+    public void insertBookmark(String email, String postingID){
+
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+
+        String sql = "INSERT INTO BOOKMARK(email, posting_id) values(?,?)";
+
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setString(2, postingID);
+
+            pstmt.executeUpdate();
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+
+        }finally {
+            try {
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+
 
 
 
