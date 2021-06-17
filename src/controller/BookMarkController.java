@@ -20,6 +20,32 @@ public class BookMarkController implements Controller {
 
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
-        return null;
+
+        ModelAndView modelAndView = new ModelAndView();
+
+
+
+        if(url.equals("/bookmark/insert/")) {
+
+            String email = session.getMember().getEmail();
+            int id = Integer.parseInt(request.getParameter("id"));
+
+
+            bookMarkService.insertBookmark(email, id);
+
+        } else if (url.equals("/bookmark/delete/")){
+
+
+            String email = session.getMember().getEmail();
+            int id = Integer.parseInt(request.getParameter("id"));
+
+            bookMarkService.deleteBookmark(email, id);
+
+
+        } else {       // display 404
+            modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
+
+        }
+
     }
 }
