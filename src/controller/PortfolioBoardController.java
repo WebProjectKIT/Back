@@ -25,7 +25,7 @@ public class PortfolioBoardController implements Controller {
         if (url.equals("/portfolio-board")) {
             if (request.getMethod().equals("GET")) {
                 ArrayList<PortfolioBoard> boards = portfolioBoardService.findBoards();
-                modelAndView.setViewName("portfolioBoard");
+                modelAndView.setLink("portfolioBoard");
                 modelAndView.getModel().put("boards", boards);
             } else if (request.getMethod().equals("POST")) {
 

@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.sampled.Port;
 
 @WebServlet(name = "frontController", urlPatterns = "/front/*")
 public class FrontController extends HttpServlet {
@@ -37,14 +35,17 @@ public class FrontController extends HttpServlet {
 
         if (com.equals("/")) {
             controller = controllerMap.get("main");
+
         } else {
             String[] tokens = com.split("/");
             String domain = tokens[1];
             controller = controllerMap.get(domain);
+
         }
 
         if (controller == null) {
             response.setStatus(HttpServletResponse.SC_ACCEPTED);
+
         } else {
             ModelAndView mv = controller.process(request, response, com);
 
@@ -52,10 +53,19 @@ public class FrontController extends HttpServlet {
                 // 예외처리
             }
 
-            String viewPath = viewResolver(mv.getViewName());
 
-            View view = new View(viewPath);    // viewPath 물리 이름 변환 필요
-            view.render(mv.getModel(), request, response);
+
+            if(mv.getDispatchType()  == View.FORWARD) {
+                String viewPath = viewResolver(mv.getLink());
+                View view = new View(viewPath);    // viewPath 물리 이름 변환 필요
+                view.render(mv.getModel(), request, response, mv.getDispatchType());
+
+            } else {
+                View view = new View(mv.getLink());
+                view.render(mv.getModel(), request, response, mv.getDispatchType());
+
+            }
+
         }
 
 

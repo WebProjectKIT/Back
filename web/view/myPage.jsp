@@ -19,9 +19,9 @@
     <body>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="main.jsp" class="navItem">Main</a>
-            <a href="seeAll.jsp" class="navItem">All Portfolio</a>
-            <a href="./myPage.jsp" class="navItem">My page</a>
+            <a href="${pageContext.request.contextPath}/front/" class="navItem">Main</a>
+            <a href="${pageContext.request.contextPath}/front/my-portfolio" class="navItem">My Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/portfolio-board" class="navItem">Portfolio Board</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="/view/asset/git-squared.png"></a>
         </div>

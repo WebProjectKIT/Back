@@ -1,14 +1,18 @@
 package controller;
 
 import domain.Member;
+import domain.Portfolio;
+import service.MypageService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MypageController implements Controller  {
+
+    MypageService mypageService = new MypageService();
+
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
 
@@ -20,13 +24,19 @@ public class MypageController implements Controller  {
             // 로그인 체크
             if(session.isLogin()){ // 정상 : 로그인이 되어 있는 경우
 
+                modelAndView.setLink("myPage");
+
                 Member member = session.getMember();
                 modelAndView.getModel().put("member", member);
-                modelAndView.setViewName("myPage");
+
+                Portfolio [] bookmarkedPortfolios = mypageService.findBookmarkedPortfolios(member.getEmail());
+
+
+
 
 
             } else { // 예외 : 로그인이 되어있지 않은 경우
-                modelAndView.setViewName("login"); // 로그인 페이지로 보내버리기
+                modelAndView.setLink("login"); // 로그인 페이지로 보내버리기
 
             }
 
