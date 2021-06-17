@@ -20,4 +20,8 @@ public class PortfolioBoardService {
     public PortfolioBoard findPostById(long id) {
         return portfolioBoardRepository.findById(id);
     }
+
+    public void write(PortfolioBoard board) {
+        portfolioBoardRepository.save(board);
+    }
 }
