@@ -81,21 +81,23 @@ public class PortfolioBoardRepository {
         return boards;
     }
 
-    public ArrayList<PortfolioBoard> getBookmarkedPortfoliosByIDList(int[] idList) {
+    public ArrayList<PortfolioBoard> getBookmarkedPortfoliosByIDList(ArrayList<Integer> idList) {
 
         ArrayList<PortfolioBoard> result = new ArrayList<>();
 
         ArrayList<PortfolioBoard> postingList = findAll();
 
-        for (int id : idList) {
-
+        for (int idx : idList) {
+            System.out.println("idx : " + idx);
+            System.out.println();
             for (PortfolioBoard posting : postingList) {  // 모든 포스팅에 대해서
-
-                if (posting.getPostingId() == id) {    // id 리스트에 존재하는 포스팅일 경우 결과 리스트에 추가
+                System.out.println("posting : " + posting.getPostingId());
+                if (posting.getPostingId() == idx) {    // id 리스트에 존재하는 포스팅일 경우 결과 리스트에 추가
                     result.add(posting);
 
                 }
             }
+            System.out.println();
 
         }
 
