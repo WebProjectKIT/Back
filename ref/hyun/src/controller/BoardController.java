@@ -16,8 +16,10 @@ public class BoardController implements Controller{
 	private final BoardService boardService = new BoardService();
 	@Override
 	public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url)
-			throws ServletException, IOException {		
+			throws ServletException, IOException {
+
 		ModelAndView modelAndView = new ModelAndView();
+
 		if(url.equals("/board/board-list")) {
 			ArrayList<Board> boards = boardService.findBoards();
 			modelAndView.setViewName("board/board-list");
