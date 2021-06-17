@@ -7,6 +7,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BookmarkRepository {
 
@@ -29,9 +30,9 @@ public class BookmarkRepository {
         return instance;
     }
 
-    public int[] getListByEmail(String email){  // email을 입력받아 해당 유저가 북마크 해 둔 게시글들의 id를 int배열 형태로 반환
+    public ArrayList<Integer> getListByEmail(String email){  // email을 입력받아 해당 유저가 북마크 해 둔 게시글들의 id를 int배열 형태로 반환
 
-        int [] list = null;
+        ArrayList<Integer> list = new ArrayList<>();
 
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -45,14 +46,16 @@ public class BookmarkRepository {
             pstmt.setString(1, email);
 
             rs = pstmt.executeQuery();
+//
+//            ResultSetMetaData rsmd = rs.getMetaData();
+//            int columnCount = rsmd.getColumnCount();
+//
+//            list = new int[columnCount];
+//            int idx = 0;
 
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int columnCount = rsmd.getColumnCount();
-
-            list = new int[columnCount];
-            int idx = 0;
-
-            if(rs.next()) { list[idx] = rs.getInt(2); }
+            while (rs.next()) {
+                list.add(rs.getInt(2));
+            }
 
 
         } catch(SQLException e) {
@@ -127,9 +130,6 @@ public class BookmarkRepository {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
-        System.out.println("repo");
-        System.out.println(postingID);
-
         String sql = "INSERT INTO BOOKMARK(email, posting_id) values(?,?)";
 
         try {
@@ -161,7 +161,7 @@ public class BookmarkRepository {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
-        String sql = "DELETE FROM BOOKMARK WHERE (email=?) AND (posting_id=?)";
+        String sql = "DELETE FROM BOOKMARK WHERE (email=? AND posting_id=?)";
 
         try {
 
@@ -171,7 +171,6 @@ public class BookmarkRepository {
             pstmt.setString(1, email);
             pstmt.setInt(2, postingID);
 
-            pstmt.executeUpdate();
 
         }catch(SQLException e) {
             e.printStackTrace();

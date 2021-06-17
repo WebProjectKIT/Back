@@ -74,9 +74,6 @@
                         </c:forEach>
 
                     </div>
-                    <a href="${pageContext.request.contextPath}/front/portfolio-board/">
-                        <p class="seeMore">´õº¸±â</p>
-                    </a>
 
                 </section>
 

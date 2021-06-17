@@ -13,7 +13,7 @@ public class BookmarkService {
 
 
     public boolean checkBookMark(String email, int portfolioId) {
-            return bookmarkRepository.isBookmarked(email, portfolioId);
+        return bookmarkRepository.isBookmarked(email, portfolioId);
     }
 
     public void insertBookmark(String email, int id) {
