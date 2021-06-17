@@ -10,8 +10,8 @@
         <style>
             <jsp:include page="/view/css/navi.css" />
             <jsp:include page="/view/css/cardview.css" />
-            <jsp:include page="/view/css/cardview.css" />
             <jsp:include page="/view/css/pagination.css" />
+            <jsp:include page="/view/css/modal.css" />
         </style>
     </head>
     <body>
@@ -41,7 +41,7 @@
                             <div class="card">
                                 <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png" onclick=addStar()>
                                 <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
-                                <h1>${board.title}</h1>
+                                <h1><a href="/front/portfolio-board/detail?id=${board.postingId}">${board.title}</a></h1>
                                 <p>${board.creationDate}</p>
                                 <p>${board.view}</p>
                                 <div class="from">made BY ${board.email}</div>
@@ -52,7 +52,7 @@
 
                 <p class="addMine" id="openBtn">글쓰기</p>
                 <div id="modal">
-                    <form method="POST">
+                    <form method="POST" action="/front/portpolio-board/register">
                     <h1>포트폴리오 추가</h1>
                     <div>
                         <label for="title">제목</label>
@@ -63,13 +63,12 @@
                     </div>
                     <div>
                         <label for="link">링크</label>
-                        <input type="text" id="link" name="link"></div>
-                    <div>
-                        <label for="about">설명</label>
-                        <input type="text" id="about" name="about"></div>
+                        <input type="text" id="link" name="link">
+                    </div>
+
                     <button onclick=getEle()>추가하기</button>
                     </form>
-                    <a class="closeBtn"><img src="./asset/cancel.png"></a>
+                    <a class="closeBtn"><img src="${pageContext.request.contextPath}/view/asset/cancel.png"></a>
                 </div>
 
                 <div class="pagination">

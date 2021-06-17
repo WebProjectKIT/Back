@@ -16,4 +16,8 @@ public class PortfolioBoardService {
     public ArrayList<PortfolioBoard> findBoards() {
         return portfolioBoardRepository.findAll();
     }
+
+    public PortfolioBoard findPostById(long id) {
+        return portfolioBoardRepository.findById(id);
+    }
 }

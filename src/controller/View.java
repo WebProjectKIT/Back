@@ -26,6 +26,5 @@ public class View {
 
 		dispatcher.forward(request, response);
 		System.out.println(viewPath);
-		System.out.println("test : forward 완료");
 	}
 }

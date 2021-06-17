@@ -77,4 +77,51 @@ public class PortfolioBoardRepository {
         }
         return boards;
     }
+
+    public PortfolioBoard findById(long id) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        PortfolioBoard post = null;
+
+        String sql = "SELECT * FROM PORTFOLIO_BOARD WHERE (posting_id=?)";
+
+        try {
+            conn = ds.getConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                Long postingId = rs.getLong("posting_id");
+                String email = rs.getString("email");
+                Long portfolioId = rs.getLong("portfolio_id");
+                String title = rs.getString("title");
+                String contents = rs.getString("contents");
+                Timestamp creationDate = rs.getTimestamp("creation_date");
+                Long view = rs.getLong("view");
+
+                post = new PortfolioBoard(postingId,email,portfolioId,title,contents,creationDate,view);
+            }
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                rs.close();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+
+        return post;
+    }
 }
