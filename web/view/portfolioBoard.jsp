@@ -53,7 +53,7 @@
                 <p class="addMine" id="openBtn">글쓰기</p>
                 <div id="modal">
                     <form method="POST" action="/front/portpolio-board/register">
-                    <h1>포트폴리오 추가</h1>
+                    <h1>글쓰기</h1>
                     <div>
                         <label for="title">제목</label>
                         <input type="text" id="title" name="title"></div>
