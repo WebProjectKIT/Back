@@ -44,7 +44,7 @@
             <article>
                 <section>
                     <h2>My Portfolio</h2>
-                    <div id="cardBody">
+                    <div class="cardBody" >
 
                         <c:forEach var="board" items="${boards}">
                         <div class="card">
