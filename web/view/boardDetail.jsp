@@ -79,8 +79,6 @@
                             <div class="comment-content">
                                 ${comment.contents}
                             </div>
-
-
                             <c:if test = "${comment.email == member.email}">
                                 <form method="post" action="/front/portfolio-board/comment-delete/?id=${comment.commentId}">
                                     <button class="back_btn">삭제</button>

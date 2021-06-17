@@ -62,7 +62,7 @@
 
                 <section>
                     <h2>Favorite</h2>
-                    <div id="cardBody">
+                    <div class="cardBody">
                         <c:forEach var="board" items="${boards}">
                             <div class="card">
                                 <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
