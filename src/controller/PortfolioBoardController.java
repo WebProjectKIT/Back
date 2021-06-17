@@ -54,12 +54,19 @@ public class PortfolioBoardController implements Controller {
         } else if (url.equals("/portfolio-board/detail/")) {
             PortfolioBoard post = portfolioBoardService.findPostById(Long.parseLong(request.getParameter("id")));
             ArrayList<Comments> comments = commentService.findCommentOfPost(Long.parseLong(request.getParameter("id")));
-            boolean checkBookMark = bookMarkService.checkBookMark(session.getMember().getEmail(), Integer.parseInt(request.getParameter("id")));
 
+            boolean checkBookMark = false;
+
+            if(session.isLogin()) {
+                checkBookMark = bookMarkService.checkBookMark(session.getMember().getEmail(), Integer.parseInt(request.getParameter("id")));
+
+            }
+
+            modelAndView.getModel().put("checkBookMark", checkBookMark);
             modelAndView.setLink("boardDetail");
             modelAndView.getModel().put("post", post);
             modelAndView.getModel().put("comments", comments);
-            modelAndView.getModel().put("checkBookMark", checkBookMark);
+
 
         } else if (url.equals("/portfolio-board/register/")) {
             String title = request.getParameter("title");

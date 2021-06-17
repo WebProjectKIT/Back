@@ -67,10 +67,12 @@
                 </div>
                 <div class="comment-row">
                     <div>
+                        <c:if test = "${isLogin}">
                         <form id="comment-form" method="post" action="/front/portfolio-board/comment-register/?id=${post.postingId}">
                             <textarea id="comment-add" name="content" row=4 form="comment-form"></textarea>
                             <button onclick="submitComment()" type="submit" class="submitBtn">작성</button>
                         </form>
+                        </c:if>>
                     </div>
                     <c:forEach var="comment" items="${comments}">
                         <div class="comment-row">
@@ -96,21 +98,23 @@
         <div class="back">
             <button class="back_btn" onclick="goBack()">이전 페이지</button>
 
-            <c:if test = "${checkBookMark}">
-            <form method="post" action="/front/bookmark/delete/?id=${post.postingId}">
-                <button class="back_btn">즐겨찾기 제거</button>
-            </form>
-            </c:if>
+            <c:if test = "${isLogin}">
+                <c:if test = "${checkBookMark}">
+                <form method="post" action="/front/bookmark/delete/?id=${post.postingId}">
+                    <button class="back_btn">즐겨찾기 제거</button>
+                </form>
+                </c:if>
 
-            <c:if test = "${!checkBookMark}">
-                <form method="post" action="/front/bookmark/insert/?id=${post.postingId}">
-                    <button class="back_btn">즐겨찾기 추가</button>
+                <c:if test = "${!checkBookMark}">
+                    <form method="post" action="/front/bookmark/insert/?id=${post.postingId}">
+                        <button class="back_btn">즐겨찾기 추가</button>
+                    </form>
+                </c:if>
+
+                <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
+                    <button class="back_btn">삭제</button>
                 </form>
             </c:if>
-
-            <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
-                <button class="back_btn">삭제</button>
-            </form>
         </div>
     </article>
 
