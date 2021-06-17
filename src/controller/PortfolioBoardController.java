@@ -1,8 +1,10 @@
 package controller;
 
 import domain.Comments;
+import domain.Portfolio;
 import domain.PortfolioBoard;
 import service.CommentService;
+import service.MyPortfolioService;
 import service.PortfolioBoardService;
 
 import javax.servlet.ServletException;
@@ -17,6 +19,7 @@ public class PortfolioBoardController implements Controller {
 
     private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
     private final CommentService commentService = new CommentService();
+//    private final MyPortfolioService myPortfolioService = new MyPortfolioService();
 
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
