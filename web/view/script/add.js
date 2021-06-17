@@ -16,15 +16,15 @@ function getEle() {
     let starImg = document.createElement('img');
     let cancelImg = document.createElement('img');
 
-    img.setAttribute("src", "asset/typewriter-801921_1920.jpg");
+    img.setAttribute("src", "/view/asset/typewriter-801921_1920.jpg");
 
-    starImg.setAttribute("src", "asset/star_blank.png");
+    starImg.setAttribute("src", "/view/asset/star_blank.png");
     starImg
         .classList
         .add("star");
     starImg.onclick = addStar;
 
-    cancelImg.setAttribute("src", "asset/cancel.png");
+    cancelImg.setAttribute("src", "/view/asset/cancel.png");
     cancelImg
         .classList
         .add("cancel");
@@ -63,9 +63,9 @@ function addStar() {
     let target = event.currentTarget;
     
     //img src로 판단하는 것인데 기준을 좀 더 생각해봐야할 듯 
-    if (target.src == "http://127.0.0.1:5500/asset/star.png") {
-        target.src = "asset/star_balnk.png";
+    if (target.src === "/view/asset/star.png") {
+        target.src = "/view/asset/star_balnk.png";
     } else {
-        target.src = "asset/star.png";
+        target.src = "/view/asset/star.png";
     }
 }

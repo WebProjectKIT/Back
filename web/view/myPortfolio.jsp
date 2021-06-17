@@ -20,10 +20,13 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="${pageContext.request.contextPath}/front/" class="navItem">Main</a>
-            <a href="${pageContext.request.contextPath}/front/portfolio-board" class="navItem">Portfolio Board</a>
-            <a href="${pageContext.request.contextPath}/front/my-page" class="navItem">My page</a>
+            <a href="${pageContext.request.contextPath}/front/portfolio-board/" class="navItem">Portfolio Board</a>
+            <a href="${pageContext.request.contextPath}/front/my-page/" class="navItem">My page</a>
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="asset/git-squared.png"></a>
+
+            <a href="${pageContext.request.contextPath}/front/login/logout/" class="navItem">logout</a>
+
         </div>
         <div id="main">
             <span onclick="openNav()">&#9776;

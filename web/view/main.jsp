@@ -19,9 +19,16 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
             <a href="${pageContext.request.contextPath}/front/my-page/" class="navItem">My page</a>
-            <a href="${pageContext.request.contextPath}/front/my-portfolio" class="navItem">My Portfolio</a>
-            <a href="${pageContext.request.contextPath}/front/portfolio-board" class="navItem">Portfolio Board</a>
-            <a href="${pageContext.request.contextPath}/login" class="navItem">Login</a>
+            <a href="${pageContext.request.contextPath}/front/my-portfolio/" class="navItem">My Portfolio</a>
+            <a href="${pageContext.request.contextPath}/front/portfolio-board/" class="navItem">Portfolio Board</a>
+
+            <c:if test = "${isLogin}">
+                <a href="${pageContext.request.contextPath}/front/login/logout/" class="navItem">logout</a>
+            </c:if>
+            <c:if test = "${!isLogin}">
+                <a href="${pageContext.request.contextPath}/login/" class="navItem">login</a>
+            </c:if>
+
 
             <a href="https://github.com/WebProjectKIT" class="navItem" id="git">
                 <img src="${pageContext.request.contextPath}/view/asset/git-squared.png"></a>
@@ -62,7 +69,7 @@
                             <div class="card">
                                 <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png" onclick=addStar()>
                                 <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
-                                <h1><a href="/front/portfolio-board/detail?id=${board.postingId}">${board.title}</a></h1>
+                                <h1>${board.title}</h1>
                                 <p>${board.creationDate}</p>
                                 <p>${board.view}</p>
                                 <div class="from">made BY ${board.email}</div>

@@ -21,6 +21,13 @@ public class PortfolioBoardController implements Controller {
     private final CommentService commentService = new CommentService();
 //    private final MyPortfolioService myPortfolioService = new MyPortfolioService();
 
+    private final Session session;
+
+    public PortfolioBoardController(Session session){
+        this.session = session;
+    }
+
+
     @Override
     public ModelAndView process(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         ModelAndView modelAndView = new ModelAndView();
