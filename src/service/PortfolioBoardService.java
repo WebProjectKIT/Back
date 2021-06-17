@@ -24,4 +24,8 @@ public class PortfolioBoardService {
     public void write(PortfolioBoard board) {
         portfolioBoardRepository.save(board);
     }
+
+    public void delete(long id) {
+        portfolioBoardRepository.deleteById(id);
+    }
 }

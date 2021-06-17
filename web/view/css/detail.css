@@ -1,92 +1,100 @@
-.detail-design{
-    margin :0 auto;
-    width:60%;
+.detail-design {
+    margin: 0 auto;
+    width: 60%;
     margin-bottom: 10%;
 }
 
-.detail-design>p{
+.detail-design > p {
     line-height: 180%;
     font-size: 120%;
 }
 
-.content-info{
-    margin-top:10px;
-    margin-bottom:10px;
+.content-info {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-#content{
-    border : 1px solid rgb(95, 95, 95);
-    margin-bottom:30px;
-    padding : 30px;
+#content {
+    border: 1px solid rgb(95, 95, 95);
+    margin-bottom: 30px;
+    padding: 30px;
     min-height: 100px;
 }
 
-.submitBtn{
-      display: inline;
-      float:right;
-      letter-spacing: 0.15rem;
-      font-weight: bolder;
-      font-size: 100%;
-      text-align: center;
-      background-color: black;
-      padding:10px;
-      border-radius: 30px;
-      color:white;
-  }
-  .submitBtn:hover{
-      cursor: pointer;
-      background-color: rgb(75, 75, 75);
-  }
-  .comment-row
-  {
-      margin-top : 25px;
-      margin-bottom:25px;
-      
-  }
-  .comment-row:first-child {
-    border-bottom: 1px solid rgb(95, 95, 95);
-  
-  }
-
-  .back{
-    text-align: center;
-  }
-  .back_btn
-  {
-    margin : auto;
+.submitBtn {
+    display: inline;
+    float: right;
     letter-spacing: 0.15rem;
     font-weight: bolder;
     font-size: 100%;
     text-align: center;
     background-color: black;
-    padding:10px;
+    padding: 10px;
     border-radius: 30px;
-    color:white;
-  }
-  .back_btn:hover{
+    color: white;
+}
+
+.submitBtn:hover {
     cursor: pointer;
     background-color: rgb(75, 75, 75);
 }
 
-.container:after { content:""; clear:both; display:block; }
+.comment-row {
+    margin-top: 25px;
+    margin-bottom: 25px;
 
-  #comment-add{
-      width:90%;
-  }
+}
 
-  .comment-content{
-      margin : 0;
-      word-break:break-all;
-  }
+.comment-row:first-child {
+    border-bottom: 1px solid rgb(95, 95, 95);
 
-  @media screen and (max-width: 1240px), (max-height:1024){
-    .detail-design{
-        width:80%;
+}
+
+.back {
+    text-align: center;
+}
+
+.back_btn {
+    margin: auto;
+    letter-spacing: 0.15rem;
+    font-weight: bolder;
+    font-size: 100%;
+    text-align: center;
+    background-color: black;
+    padding: 10px;
+    border-radius: 30px;
+    color: white;
+}
+
+.back_btn:hover {
+    cursor: pointer;
+    background-color: rgb(75, 75, 75);
+}
+
+.container:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+#comment-add {
+    width: 90%;
+}
+
+.comment-content {
+    margin: 0;
+    word-break: break-all;
+}
+
+@media screen and (max-width: 1240px), (max-height: 1024) {
+    .detail-design {
+        width: 80%;
     }
-    #comment-add{
-        width:80%;
+
+    #comment-add {
+        width: 80%;
     }
 
-    
+
 }
 

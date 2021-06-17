@@ -40,6 +40,10 @@ public class PortfolioBoardController implements Controller {
 //
 //            portfolioBoardService.write(board);
 //            modelAndView.setViewName("index");
+        } else if (url.equals("/portfolio-board/delete")) {
+            portfolioBoardService.delete(Long.parseLong(request.getParameter("id")));
+            // TODO redirect 필요?
+            modelAndView.setViewName("main");
         } else {
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

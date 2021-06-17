@@ -69,6 +69,9 @@
                 </section>
                 <div class = "back">
                 <button class ="back_btn" onclick="goBack()">이전 페이지</button>
+                <form method="post" action="/front/portfolio-board/delete?id=${post.postingId}">
+                    <button class ="back_btn">삭제</button>
+                </form>
             </div>
             </article>
 
