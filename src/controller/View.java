@@ -13,33 +13,19 @@ public class View {
 
 	private String viewPath;
 
-	public static final int FORWARD = 1;
-	public static final int REDIRECT = 2;
-
-
 	public View(String viewPath) {
 		this.viewPath = viewPath;
 	}
 
-	public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response, int dispatchType)
+	public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		model.forEach((key, value) -> request.setAttribute(key, value));
 
-		if(dispatchType == FORWARD) {
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);//물리? 논리?
 
-			model.forEach((key, value) -> request.setAttribute(key, value));
-			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);//물리? 논리?
-
-			dispatcher.forward(request, response);
-			System.out.println(viewPath);
-			System.out.println("test : forward 완료");
-
-		} else if (dispatchType == REDIRECT){
-
-			response.sendRedirect(viewPath);
-
-		}
-
-
+		dispatcher.forward(request, response);
+		System.out.println(viewPath);
+		System.out.println("test : forward 완료");
 	}
 }

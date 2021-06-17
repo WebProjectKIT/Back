@@ -12,15 +12,10 @@ public class ModelAndView {
 	//String -> 모델의 이름 
 	private Map<String, Object> model = new HashMap<>();
 	private int status;
-
-	private int dispatchType;
-
-
+	
 	public ModelAndView() {
 		status = HttpServletResponse.SC_OK;
-		dispatchType = View.FORWARD; // Default forward
 	}
-
 
 	public String getViewName() {
 		return viewName;
@@ -45,13 +40,4 @@ public class ModelAndView {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
-	public int getDispatchType() {
-		return dispatchType;
-	}
-
-	public void setDispatchType(int dispatchType) {
-		this.dispatchType = dispatchType;
-	}
-
 }
