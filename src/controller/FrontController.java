@@ -37,14 +37,17 @@ public class FrontController extends HttpServlet {
 
         if (com.equals("/")) {
             controller = controllerMap.get("main");
+
         } else {
             String[] tokens = com.split("/");
             String domain = tokens[1];
             controller = controllerMap.get(domain);
+
         }
 
         if (controller == null) {
             response.setStatus(HttpServletResponse.SC_ACCEPTED);
+
         } else {
             ModelAndView mv = controller.process(request, response, com);
 
