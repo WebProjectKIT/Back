@@ -33,10 +33,16 @@ public class MyPortfolioController implements Controller {
 
                 String userEmail = session.getMember().getEmail();
 
-                ArrayList<Portfolio> portfolios = myPortfolioService.findByEmail(userEmail);
+                int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 
-                modelAndView.getModel().put("boards", portfolios);
+                Paging paging = myPortfolioService.getPagingInfo(page, userEmail);
+                page = (page - 1) * 3;
+                ArrayList<Portfolio> boards = myPortfolioService.getBoardList(page, paging.getPageSize(), userEmail);
+
                 modelAndView.setLink("myPortfolio");
+                modelAndView.getModel().put("paging", paging);
+                modelAndView.getModel().put("boards", boards);
+
 
 
             } else if (url.equals("/my-portfolio/write/")){
