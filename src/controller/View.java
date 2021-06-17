@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 //        2. "auth", int auth
 public class View {
 
-	private String viewPath;
+	private String path;
 
 	public static final int FORWARD = 1;
 	public static final int REDIRECT = 2;
 
 
-	public View(String viewPath) {
-		this.viewPath = viewPath;
+	public View(String path) {
+		this.path = path;
 	}
 
 	public void render(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response, int dispatchType)
@@ -28,15 +28,15 @@ public class View {
 		if(dispatchType == FORWARD) {
 
 			model.forEach((key, value) -> request.setAttribute(key, value));
-			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);//물리? 논리?
+			RequestDispatcher dispatcher = request.getRequestDispatcher(path);//물리? 논리?
 
 			dispatcher.forward(request, response);
-			System.out.println(viewPath);
+			System.out.println(path);
 			System.out.println("test : forward 완료");
 
 		} else if (dispatchType == REDIRECT){
 
-			response.sendRedirect(viewPath);
+			response.sendRedirect(path);
 
 		}
 

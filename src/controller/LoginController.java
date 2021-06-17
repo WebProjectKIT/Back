@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class LoginController implements Controller {
 
@@ -31,18 +30,24 @@ public class LoginController implements Controller {
                     request.getSession().setAttribute("member", member) ;
 
                     System.out.println("test : 로그인 성공");
-                    modelAndView.setViewName("main");
+
+                    modelAndView.setLink("/front/");
+                    modelAndView.setDispatchType(View.REDIRECT);
 
                 } else {   // 로그인 실패
 
                     System.out.println("test : 로그인 실패");
-                    modelAndView.setViewName("login");
+
+                    modelAndView.setLink("/login/");
+                    modelAndView.setDispatchType(View.REDIRECT);
 
                 }
             } else {    // 예외 : 이미 로그인 되어 있을 경우
 
                 System.out.println("test : 이미 로그인 돼있음");
-                modelAndView.setViewName("main");
+
+                modelAndView.setLink("/front/");
+                modelAndView.setDispatchType(View.REDIRECT);
 
             }
 

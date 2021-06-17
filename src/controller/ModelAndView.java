@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 //model과 viewpath에 대한 정보를 담음
 public class ModelAndView {
 	
-	private String viewName;
+	private String link;
+
 	//String -> 모델의 이름 
 	private Map<String, Object> model = new HashMap<>();
 	private int status;
@@ -22,12 +23,12 @@ public class ModelAndView {
 	}
 
 
-	public String getViewName() {
-		return viewName;
+	public String getLink() {
+		return link;
 	}
 
-	public void setViewName(String viewName) {
-		this.viewName = viewName;
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	public Map<String, Object> getModel() {
@@ -53,5 +54,6 @@ public class ModelAndView {
 	public void setDispatchType(int dispatchType) {
 		this.dispatchType = dispatchType;
 	}
+
 
 }

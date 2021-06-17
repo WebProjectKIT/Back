@@ -2,7 +2,6 @@ package controller;
 
 import domain.PortfolioBoard;
 import service.MainPageService;
-import service.PortfolioBoardService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,7 @@ public class MainPageController implements Controller {
             if(request.getMethod().equals("GET")) {
                 ArrayList<PortfolioBoard> boards = mainPageService.findBoards();
 //                ArrayList<PortfolioBoard>
-                modelAndView.setViewName("main");
+                modelAndView.setLink("main");
                 modelAndView.getModel().put("boards", boards);
             }
         } else {
