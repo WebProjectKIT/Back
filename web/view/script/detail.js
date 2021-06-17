@@ -30,7 +30,7 @@ function submitComment(){
         commentEL.appendChild(contentEL);
 
         document.getElementById('comments').appendChild(commentEL);
-        newcommentEL.value="";
+        // newcommentEL.value="";
 
         const countEL = document.getElementById('comment-count');
         const count = countEL.innerText;

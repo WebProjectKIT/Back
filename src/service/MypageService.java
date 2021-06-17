@@ -12,6 +12,6 @@ public class MypageService {
         int [] list = bookmarkRepository.getListToEmail(email);
 
 
-
+        return null;
     }
 }

@@ -35,7 +35,7 @@ public class CommentsRepository {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
-        String sql = "INSERT INTO COMMENTS(contents) values(?)";
+        String sql = "INSERT INTO COMMENTS(email, posting_id, contents) values(?, ?, ?)";
         try {
             conn = ds.getConnection();
         } catch (SQLException e) {
@@ -43,7 +43,9 @@ public class CommentsRepository {
         }
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, comments.getContents());
+            pstmt.setString(1, comments.getEmail());
+            pstmt.setString(2, String.valueOf(comments.getPostingId()));
+            pstmt.setString(3, comments.getContents());
 
             pstmt.executeUpdate();
         }catch(SQLException e) {

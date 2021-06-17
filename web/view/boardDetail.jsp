@@ -49,8 +49,8 @@
                 </div>
                 <div class="comment-row">
                     <div>
-                        <form method="post" action="/front/portfolio-board/comment-register">
-                            <textarea id="comment-add" name="comment-add" row=4></textarea>
+                        <form id="comment-form" method="post" action="/front/portfolio-board/comment-register?id=${post.postingId}">
+                            <textarea id="comment-add" name="content" row=4 form="comment-form"></textarea>
                             <button onclick="submitComment()" type="submit" class="submitBtn">¿€º∫</button>
                         </form>
                     </div>

@@ -32,7 +32,7 @@ public class PortfolioBoardController implements Controller {
             }
         } else if (url.equals("/portfolio-board/detail")) {
             PortfolioBoard post = portfolioBoardService.findPostById(Long.parseLong(request.getParameter("id")));
-            modelAndView.setViewName("boardDetail");
+            modelAndView.setLink("boardDetail");
             modelAndView.getModel().put("post", post);
         } else if (url.equals("/portpolio-board/register")) {
             String title = request.getParameter("title");
@@ -46,14 +46,21 @@ public class PortfolioBoardController implements Controller {
         } else if (url.equals("/portfolio-board/delete")) {
             portfolioBoardService.delete(Long.parseLong(request.getParameter("id")));
             // TODO redirect 필요?
-            modelAndView.setViewName("main");
+            modelAndView.setLink("main");
         } else if (url.equals("/portfolio-board/comment-register")) {
-            String contents = request.getParameter("contents");
+            Session session = new Session(request);
+            String email = session.getMember().getEmail();
+            int postingId = Integer.parseInt(request.getParameter("id"));
+            String content = request.getParameter("content");
 
-
+            System.out.println(content);
             Comments comments = new Comments();
-            comments.setContents(contents);
+            comments.setEmail(email);
+            comments.setContents(content);
+            comments.setPostingId(postingId);
+
             commentService.write(comments);
+            modelAndView.setLink("main");
         } else {
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
