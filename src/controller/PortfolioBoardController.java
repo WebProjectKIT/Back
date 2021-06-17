@@ -64,7 +64,8 @@ public class PortfolioBoardController implements Controller {
         } else if (url.equals("/portfolio-board/delete/")) {
             portfolioBoardService.delete(Long.parseLong(request.getParameter("id")));
             // TODO redirect 필요?
-            modelAndView.setLink("main");
+            modelAndView.setLink("/front/");
+            modelAndView.setDispatchType(View.REDIRECT);
 
         } else if (url.equals("/portfolio-board/comment-register/")) {
             String email = session.getMember().getEmail();
@@ -78,12 +79,14 @@ public class PortfolioBoardController implements Controller {
             comments.setPostingId(postingId);
 
             commentService.write(comments);
-            modelAndView.setLink("main");
+            modelAndView.setLink("/front/");
+            modelAndView.setDispatchType(View.REDIRECT);
 
         } else if (url.equals("/portfolio-board/comment-delete/")) {
             commentService.delete(Long.parseLong(request.getParameter("id")));
             // TODO redirect 필요?
-            modelAndView.setLink("main");
+            modelAndView.setLink("/front/");
+            modelAndView.setDispatchType(View.REDIRECT);
         } else {
             modelAndView.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }

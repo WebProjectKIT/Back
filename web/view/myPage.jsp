@@ -67,12 +67,13 @@
                             <div class="card">
                                 <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png" onclick=addStar()>
                                 <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
-                                <h1>${board.title}</h1>
+                                <h1><a href="/front/portfolio-board/detail/?id=${board.postingId}">${board.title}</a></h1>
                                 <p>${board.creationDate}</p>
                                 <p>${board.view}</p>
                                 <div class="from">made BY ${board.email}</div>
                             </div>
                         </c:forEach>
+
                     </div>
                     <a href="${pageContext.request.contextPath}/front/portfolio-board/">
                         <p class="seeMore">´õº¸±â</p>
