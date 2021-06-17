@@ -1,4 +1,4 @@
-#cardBody{
+.cardBody{
     display:flex;
     flex-wrap: wrap;
     margin:0 auto;

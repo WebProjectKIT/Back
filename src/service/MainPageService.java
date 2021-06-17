@@ -14,4 +14,8 @@ public class MainPageService {
     public ArrayList<PortfolioBoard> findBoards() {
         return portfolioBoardRepository.findAll();
     }
+
+    public ArrayList<PortfolioBoard> getMyPortlioBoard(String email) {
+        return portfolioBoardRepository.getMyPortfolio(email);
+    }
 }

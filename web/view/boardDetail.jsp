@@ -67,7 +67,7 @@
                 </div>
                 <div class="comment-row">
                     <div>
-                        <form id="comment-form" method="post" action="/front/portfolio-board/comment-register?id=${post.postingId}">
+                        <form id="comment-form" method="post" action="/front/portfolio-board/comment-register/?id=${post.postingId}">
                             <textarea id="comment-add" name="content" row=4 form="comment-form"></textarea>
                             <button onclick="submitComment()" type="submit" class="submitBtn">작성</button>
                         </form>
@@ -79,6 +79,11 @@
                             <div class="comment-content">
                                 ${comment.contents}
                             </div>
+                            <c:if test = "${comment.email == member.email}">
+                                <form method="post" action="/front/portfolio-board/comment-delete/?id=${comment.commentId}">
+                                    <button class="back_btn">삭제</button>
+                                </form>
+                            </c:if>
                         </div>
                     </c:forEach>
                 </div>
@@ -87,7 +92,7 @@
         </section>
         <div class="back">
             <button class="back_btn" onclick="goBack()">이전 페이지</button>
-            <form method="post" action="/front/portfolio-board/delete?id=${post.postingId}">
+            <form method="post" action="/front/portfolio-board/delete/?id=${post.postingId}">
                 <button class="back_btn">삭제</button>
             </form>
         </div>

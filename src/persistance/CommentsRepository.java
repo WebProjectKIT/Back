@@ -103,4 +103,35 @@ public class CommentsRepository {
         }
         return commentList;
     }
+
+    public void deleteById(long id) {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        String sql = "DELETE FROM COMMENTS WHERE (comment_id=?)";
+
+        try {
+            conn = ds.getConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setLong(1, id);
+            pstmt.executeUpdate();
+
+        }catch(SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
 }
