@@ -53,11 +53,13 @@
             <h2>Portfolio</h2>
             <p>포트폴리오 게시판</p>
 
-            <div id="cardBody">
+            <div class="cardBody">
                 <c:forEach var="board" items="${boards}">
                     <div class="card">
-                        <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"
-                             onclick=addStar()>
+<%--                        <a href="/front/portfolio-board/bookmark/?id=${board.portfolioId}">--%>
+                            <img class="star" src="${pageContext.request.contextPath}/view/asset/star_blank.png"
+                                 onclick=addStar()>
+<%--                        </a>--%>
                         <img src="${pageContext.request.contextPath}/view/asset/typewriter-801921_1920.jpg">
                         <h1><a href="/front/portfolio-board/detail/?id=${board.postingId}">${board.title}</a></h1>
                         <p>${board.creationDate}</p>
@@ -70,7 +72,7 @@
 
         <p class="addMine" id="openBtn">글쓰기</p>
         <div id="modal">
-            <form method="POST" action="/front/portpolio-board/register/">
+            <form method="POST" action="/front/portfolio-board/register/">
                 <h1>글쓰기</h1>
                 <div>
                     <label for="title">제목</label>
@@ -79,10 +81,18 @@
                     <label for="content">내용</label>
                     <textarea class="form-control" rows="10" id="content" name="content"></textarea>
                 </div>
-                <div>
-                    <label for="link">링크</label>
-                    <input type="text" id="link" name="link">
-                </div>
+<%--                <div>--%>
+<%--                    <label for="link">링크</label>--%>
+<%--                    <input type="text" id="link" name="link">--%>
+<%--                </div>--%>
+                <label for="myPort">포트폴리오 선택</label>
+                <select id="myPort" name="myPort" size="1">
+                    <option value="">선택하세요.</option>
+<%--                        <option value="학생">학생</option>--%>
+                    <c:forEach var="myPortfolio" items="${myPortfolio}">
+                        <option value="${myPortfolio.portfolioId}">${myPortfolio.portfolioId} : ${myPortfolio.title}</option>
+                    </c:forEach>
+                </select> <br> <br>
 
                 <button onclick=getEle()>추가하기</button>
             </form>

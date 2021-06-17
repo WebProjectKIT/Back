@@ -1,8 +1,10 @@
 package controller;
 
 import domain.Comments;
+import domain.Portfolio;
 import domain.PortfolioBoard;
 import service.CommentService;
+import service.MyPortfolioService;
 import service.PortfolioBoardService;
 
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ public class PortfolioBoardController implements Controller {
 
     private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
     private final CommentService commentService = new CommentService();
-//    private final MyPortfolioService myPortfolioService = new MyPortfolioService();
+    private final MyPortfolioService myPortfolioService = new MyPortfolioService();
 
     private final Session session;
 
@@ -31,12 +33,15 @@ public class PortfolioBoardController implements Controller {
         //GET, POST
         if (url.equals("/portfolio-board/")) {
             if (request.getMethod().equals("GET")) {
+                if(session.isLogin()){
+                    ArrayList<Portfolio> myPortfolio = myPortfolioService.findByEmail(session.getMember().getEmail());
+                    modelAndView.getModel().put("myPortfolio", myPortfolio);
+                }
                 int page = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
 
                 Paging paging = portfolioBoardService.getPagingInfo(page);
                 page = (page - 1) * 3;
                 ArrayList<PortfolioBoard> boards = portfolioBoardService.getBoardList(page, paging.getPageSize());
-
                 modelAndView.setLink("portfolioBoard");
                 modelAndView.getModel().put("paging", paging);
                 modelAndView.getModel().put("boards", boards);
@@ -51,15 +56,15 @@ public class PortfolioBoardController implements Controller {
             modelAndView.getModel().put("post", post);
             modelAndView.getModel().put("comments", comments);
 
-        } else if (url.equals("/portpolio-board/register/")) {
+        } else if (url.equals("/portfolio-board/register/")) {
             String title = request.getParameter("title");
-            String contents = request.getParameter("contents");
+            String contents = request.getParameter("content");
+            Long myPortfolio = Long.parseLong(request.getParameter("myPort"));
 
-            //TODO 포트폴리오 선택 어떻게 할지
-//            PortfolioBoard board = new PortfolioBoard(title, contents);
-//
-//            portfolioBoardService.write(board);
-//            modelAndView.setViewName("index");
+            PortfolioBoard board = new PortfolioBoard(session.getMember().getEmail(), myPortfolio, title, contents, 0);
+            portfolioBoardService.write(board);
+            modelAndView.setLink("/front/");
+            modelAndView.setDispatchType(View.REDIRECT);
 
         } else if (url.equals("/portfolio-board/delete/")) {
             portfolioBoardService.delete(Long.parseLong(request.getParameter("id")));

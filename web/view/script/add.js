@@ -61,6 +61,7 @@ function addStar() {
     tmp = "http://localhost:" + location.port + "/view/asset/star.png"
 
     if (target.src === tmp) {
+        fetch("/front/")
         target.src = "/view/asset/star_blank.png";
     } else {
         target.src = "/view/asset/star.png";

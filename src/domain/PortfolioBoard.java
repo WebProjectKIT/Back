@@ -26,6 +26,14 @@ public class PortfolioBoard {
         this.view = view;
     }
 
+    public PortfolioBoard(String email, long myPortfolio, String title, String contents, int view) {
+        this.email = email;
+        this.portfolioId = myPortfolio;
+        this.title = title;
+        this.contents = contents;
+        this.view = view;
+    }
+
     public long getPostingId() {
         return postingId;
     }

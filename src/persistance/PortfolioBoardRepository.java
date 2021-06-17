@@ -155,7 +155,8 @@ public class PortfolioBoardRepository {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
-        String sql = "INSERT INTO BOARD(title, writer, contents) values(?,?,?)";
+
+        String sql = "INSERT INTO PORTFOLIO_BOARD(email, portfolio_id, title, contents, view) values(?,?,?,?,?)";
         try {
             conn = ds.getConnection();
         } catch (SQLException e) {
@@ -163,9 +164,11 @@ public class PortfolioBoardRepository {
         }
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, board.getTitle());
-//            pstmt.setString(2, board.getWriter());
-            pstmt.setString(3, board.getContents());
+            pstmt.setString(1, board.getEmail());
+            pstmt.setLong(2, board.getPortfolioId());
+            pstmt.setString(3, board.getTitle());
+            pstmt.setString(4, board.getContents());
+            pstmt.setLong(5, board.getView());
 
             pstmt.executeUpdate();
         } catch (SQLException e) {

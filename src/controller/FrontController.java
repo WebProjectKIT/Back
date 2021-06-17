@@ -1,5 +1,6 @@
 package controller;
 
+import java.awt.print.Book;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class FrontController extends HttpServlet {
         controllerMap.put("my-page", new MypageController(session));
         controllerMap.put("my-portfolio", new MyPortfolioController(session));
         controllerMap.put("portfolio-board", new PortfolioBoardController(session));
-
+        controllerMap.put("bookmark", new BookMarkController(session));
     }
 
     @Override
