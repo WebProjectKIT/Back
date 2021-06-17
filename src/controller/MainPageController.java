@@ -2,6 +2,7 @@ package controller;
 
 import domain.PortfolioBoard;
 import service.MainPageService;
+import service.MyPortfolioService;
 import service.PortfolioBoardService;
 
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ public class MainPageController implements Controller {
 
     private final MainPageService mainPageService = new MainPageService();
     private final PortfolioBoardService portfolioBoardService = new PortfolioBoardService();
+    private final MyPortfolioService myPortfolioService = new MyPortfolioService();
+
     private Session session;
 
     public MainPageController(Session session){
